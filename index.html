@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,42 +11,42 @@
             box-sizing: border-box;
         }
 
-        /* Light Mode (Professional) */
+        /* Light Mode (Purple theme) */
         :root {
-            --primary-color: #1a365d;  /* Deep professional blue */
-            --accent-color: #2563eb;   /* Bright blue for links */
-            --text-dark: #0f172a;      /* Much darker for better contrast */
-            --text-light: #475569;      /* Darker gray for better readability */
-            --bg-light: #f8fafc;        /* Very light gray */
+            --primary-color: #4c1d95;      /* Deep purple */
+            --accent-color: #a855f7;       /* Bright violet */
+            --text-dark: #0f172a;          /* Dark text */
+            --text-light: #6b7280;         /* Softer gray */
+            --bg-light: #f9f5ff;           /* Very light lavender */
             --bg-white: #ffffff;
-            --border-color: #e2e8f0;
-            --hover-bg: #f1f5f9;
-            --gradient-start: #1e3a8a;  /* Professional dark blue */
-            --gradient-end: #1e40af;    /* Slightly lighter blue */
-            --header-gradient-start: #1a365d;
-            --header-gradient-end: #2c5282;
-            --card-shadow: rgba(0, 0, 0, 0.1);
+            --border-color: #e5e7eb;
+            --hover-bg: #f3e8ff;           /* Light purple hover */
+            --gradient-start: #6d28d9;     /* Main background gradient start */
+            --gradient-end: #a855f7;       /* Main background gradient end */
+            --header-gradient-start: #5b21b6; /* Header gradient start */
+            --header-gradient-end: #a855f7;   /* Header gradient end */
+            --card-shadow: rgba(0, 0, 0, 0.08);
             --transition-speed: 0.3s;
         }
         
-        /* Dark Mode */
+        /* Dark Mode (keep it cool + slightly purple) */
         [data-theme="dark"] {
-            --primary-color: #93c5fd;   /* Light blue for dark mode */
-            --accent-color: #60a5fa;    /* Softer blue */
-            --text-dark: #f1f5f9;       /* Light gray */
-            --text-light: #cbd5e1;      /* Medium gray */
-            --bg-light: #1e293b;        /* Dark background */
-            --bg-white: #0f172a;        /* Very dark background */
-            --border-color: #334155;    /* Dark border */
-            --hover-bg: #334155;
-            --gradient-start: #0f172a;  /* Very dark for background */
-            --gradient-end: #1e293b;
-            --header-gradient-start: #1e293b;
-            --header-gradient-end: #334155;
-            --card-shadow: rgba(0, 0, 0, 0.3);
+            --primary-color: #e9d5ff;      /* Light lavender for headings */
+            --accent-color: #c4b5fd;       /* Soft indigo */
+            --text-dark: #f9fafb;
+            --text-light: #d1d5db;
+            --bg-light: #020617;
+            --bg-white: #020617;
+            --border-color: #111827;
+            --hover-bg: #111827;
+            --gradient-start: #020617;
+            --gradient-end: #111827;
+            --header-gradient-start: #111827;
+            --header-gradient-end: #1f2937;
+            --card-shadow: rgba(0, 0, 0, 0.4);
         }
 
-        /* Page-specific accent colors */
+        /* Page-specific accent colors (you can keep these as-is) */
         body[data-page="research"] {
             --accent-color: #10b981; /* Green for research */
         }
@@ -173,7 +172,7 @@
         }
 
         [data-theme="dark"] header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, #020617 0%, #111827 100%);
         }
 
         header::before {
@@ -212,13 +211,14 @@
             }
         }
 
+        /* BIGGER + SQUARE(ish) PHOTO */
         .profile-photo img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
+            width: 240px;
+            height: 240px;
+            border-radius: 18px;  /* soft square, not circle */
             object-fit: cover;
-            border: 5px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 5px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
             background: rgba(255, 255, 255, 0.1);
         }
 
@@ -281,13 +281,13 @@
         }
 
         .affiliation a {
-            color: #a3d5ff;
+            color: #e9d5ff;  /* light lavender link in header */
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .affiliation a:hover {
-            color: white;
+            color: #ffffff;
             text-decoration: underline;
         }
 
@@ -411,7 +411,7 @@
         }
 
         [data-theme="dark"] .publication {
-            background: #1e293b;
+            background: #020617;
         }
 
         .publication::before {
@@ -421,7 +421,7 @@
             top: 0;
             height: 100%;
             width: 4px;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #667eea 100%);
+            background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
@@ -477,7 +477,7 @@
             background: var(--accent-color);
             color: white;
             transform: translateY(-2px);
-            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3); /* purple glow */
         }
 
         .news-container {
@@ -497,7 +497,7 @@
         }
 
         [data-theme="dark"] .news-item {
-            background: #1e293b;
+            background: #020617;
         }
 
         .news-item:hover {
@@ -525,39 +525,39 @@
         }
 
         .tag-publication {
-            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
-            color: #667eea;
-            border: 1px solid #667eea30;
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            color: #7c3aed;
+            border: 1px solid #ddd6fe;
         }
 
         [data-theme="dark"] .tag-publication {
-            background: rgba(96, 165, 250, 0.2);
-            color: #60a5fa;
-            border: 1px solid rgba(96, 165, 250, 0.3);
+            background: rgba(124, 58, 237, 0.2);
+            color: #c4b5fd;
+            border: 1px solid rgba(124, 58, 237, 0.4);
         }
 
         .tag-talk {
-            background: #3498db20;
-            color: #3498db;
-            border: 1px solid #3498db30;
+            background: #e0f2fe;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
         }
 
         .tag-service {
-            background: #2ecc7120;
-            color: #27ae60;
-            border: 1px solid #2ecc7130;
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
         }
 
         .tag-conference {
-            background: #16a08520;
-            color: #16a085;
-            border: 1px solid #16a08530;
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #bbf7d0;
         }
 
         .tag-milestone {
-            background: #f39c1220;
-            color: #f39c12;
-            border: 1px solid #f39c1230;
+            background: #fef9c3;
+            color: #92400e;
+            border: 1px solid #fef3c7;
         }
 
         .news-item p {
@@ -601,18 +601,18 @@
         }
 
         .email-button {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #667eea 100%);
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+            background: linear-gradient(135deg, var(--accent-color) 0%, #7c3aed 100%);
+            box-shadow: 0 4px 15px rgba(168, 85, 247, 0.25);
         }
 
         .cv-download-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25);
         }
 
         .email-button:hover, .cv-download-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 6px 20px rgba(147, 51, 234, 0.35);
             text-decoration: none;
         }
 
@@ -657,9 +657,11 @@
                 text-align: center;
             }
 
+            /* Smaller but still square on mobile */
             .profile-photo img {
-                width: 150px;
-                height: 150px;
+                width: 190px;
+                height: 190px;
+                border-radius: 18px;
             }
 
             header h1 {
@@ -720,298 +722,6 @@
     </style>
 </head>
 <body data-page="home">
-    <!-- Theme Toggle Button (MOVED TO CORRECT POSITION) -->
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-        <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
-        </svg>
-        <svg class="moon-icon" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
-        </svg>
-    </button>
-
-    <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="profile-photo">
-                    <img src="me2.png" alt="Negin Maddah">
-                </div>
-                <div class="header-text">
-                    <h1>Negin Maddah</h1>
-                    <p class="subtitle">PhD Student in Industrial Engineering</p>
-                    <p class="affiliation">
-                        <a href="https://coe.northeastern.edu/" target="_blank">College of Engineering</a><br>
-                        Northeastern University
-                    </p>
-                    <div class="header-links">
-                        <a href="NM_resume.pdf" class="header-link" target="_blank">CV</a>
-                        <a href="https://scholar.google.com/citations?user=hXWdTswAAAAJ&hl=en&oi=ao" class="header-link" target="_blank">Google Scholar</a>
-                        <a href="https://github.com/neginmaddah?tab=overview&from=2025-10-01&to=2025-10-31" class="header-link" target="_blank">GitHub</a>
-                        <a href="https://www.linkedin.com/in/neginmaddah/" class="header-link" target="_blank">LinkedIn</a>
-                        <a href="mailto:maddah.n@northeastern.edu" class="header-link" target="_blank">Contact</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <nav>
-            <ul>
-                <li><a href="#about" onclick="smoothScroll('about')">About</a></li>
-                <li><a href="#research" onclick="smoothScroll('research')">Research</a></li>
-                <li><a href="#publications" onclick="smoothScroll('publications')">Publications</a></li>
-                <!-- <li><a href="#news" onclick="smoothScroll('news')">News</a></li> -->
-                <!-- <li><a href="writing.html">Blog</a></li> -->
-                <!-- <li><a href="#contact" onclick="smoothScroll('contact')">Contact</a></li> -->
-            </ul>
-        </nav>
-
-        <div class="content">
-            <section id="about">
-                <h2>About Me</h2>
-                <div class="about-content">
-                    <p>I am a PhD student in the College of Engineering at <a href="https://coe.northeastern.edu/" target="_blank">Northeastern University</a>.
-                    I am a member of <a href="https://sites.google.com/view/magicslab/home" target="_blank">MAGICS Lab (Multi AGent Intelligent Complex Systems,</a>
-                        and my advisor is <a href="https://coe.northeastern.edu/people/heydari-babak/" target="_blank">Babak Heydari</a>. 
-                    </p>
-                    
-                    <p>My research interests is at the intersection of <strong>applied artificial intelligence</strong> and <strong>social science</strong>. Currently, my focus is on analyzing the causaf effect of system-level treatments on users' interaction patterns in digital platform: who is more affected by ChatGPT? what type of users? and why is that?</p>
-                </div>
-
-                <div class="highlight-box">
-                    <p><strong>🎓 Academic Background:</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>PhD candidate in <a href="https://mie.northeastern.edu/academics/graduate-studies/phd-inde/" target="_blank">Industrial Engineering</a> at Northeastern University, Boston, MA (2022-2026).</li>
-                        <li>Graduate certificate <a href="https://mie.northeastern.edu/academics/graduate-studies/cert-dae/" target="_blank">Data Analytics Engineering</a> at Northeastern, Boston, MA (2022-2026)</li>
-                        <li>Masters in Industrial Engineering <a href="https://en.industrial.kntu.ac.ir/page-industrialEn9609/en/40/form/pId1176" target="_blank">K. N. Toosi University of Technology</a>, Tehran, Iran (2017-2020).</li>
-                        <li>Undergraduate in Industrial Engineering from <a href="https://www.timeshighereducation.com/world-university-rankings/alzahra-university" target="_blank">University of Alzahra</a>, Tehran, Iran (2013-2017).</li>
-                       
-                    </ul>
-                </div>
-
-                <div class="highlight-box">
-                    <p><strong>📢 Experience:</strong></p>
-                    <p style="margin-top: 10px;">I am an AI Researcher at <a href="https://nezamilab.bwh.harvard.edu/" target="_blank">Harvard Medical School - Nezami Lab</a>. I did my 2025 Summer Internship there, and am wrapping up two papers of applied AI in medical field currently.</p>
-                    <p style="margin-top: 10px;">I am a Graduate Teaching Assistant at College of Engineering of Northeastern for a required course of Engineering Management Masters Degree.</p>
-                    <p style="margin-top: 10px;">I have been a Systems and Processes Analyst for four years in the industry in Tehran before starting my PhD: I did these mostly: process mining/ data mining/ dashcoard design/ Product design/ Project Management/ Cross-functional Collaboration with product managers and software development teams.</p>
-                </div>
-
-                <p class="legal-name">
-                    <strong>Note:</strong> My legal name is Negin, but I also go by Megan (I realized it is just easier to say "a coffee for Megan" here in the US cafes.)
-                </p>
-            </section>
-
-            <section id="research">
-                <h2>Research Interests</h2>
-                <div class="about-content">
-                    <p>My research focuses on the intersection of AI/Statistics and social science. I am particularly interested in:</p>
-                    <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
-                        <li><strong>Modeling/Forecasting Users Behaviors or Adverse System Outcomes:</strong> Applying Generative AI (Transformers/CNNs/RNNs/LSTM/GRU/LLMs), Classic ML (XGBoost/KNN/Naive Bayes/Regression/...) </li>
-                        <li><strong>Estimating the Causal Effect of System-Level Treatments:</strong> Using causal inference (regression discontinuity, DiD, event study, synthtic control model</li>
-                        
-                       
-                    </ul>
-                </div>
-            </section>
-
-            <section id="publications">
-                <h2>Publications</h2>
-                
-                <div class="publication">
-                    <h3>Building back better: Modeling decentralized recovery in sociotechnical systems using strategic network dynamics</h3>
-                    <p class="authors">Negin Maddah, Babak Heydari</p>
-                    <p class="venue">Reliability Engineering & System Safety</p>
-                    <div class="links">
-                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0951832024001595" target="Reliability Engineering & System Safety"></a>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Platform-Driven Collaboration Patterns: Structural Evolution Over Time and Scale</h3>
-                    <p class="authors">Negin Maddah, Babak Heydari</p>
-                    <p class="venue">IEEE Transactions on Computational Social Systems</p>
-                    <div class="links">
-                        <a href="https://ieeexplore.ieee.org/abstract/document/10691640" target="_blank">IEEE</a>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>The Shifting Dynamics of Online Knowledge Platforms and the Implications for Generative AI Sustainability</h3>
-                    <p class="authors">Babak Heydari, Negin Maddah</p>
-                    <p class="venue"> [to be submitted] </p>
-                    <div class="links">
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5117087" target="_blank"></a>
-                    </div>
-                </div>
-              
-                <div class="publication">
-                    <h3>Data-driven performance management of business units using process mining and DEA: case study of an Iranian chain store</h3>
-                    <p class="authors">Negin Maddah, Emad Roghanian</p>
-                    <p class="venue">International Journal of Productivity and Performance Managemen</p>
-                    <div class="links">
-                        <a href="https://www.emerald.com/ijppm/article-abstract/72/2/550/164309/Data-driven-performance-management-of-business?redirectedFrom=fulltext" target="International Journal of Productivity and Performance Managemen"></a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- <section id="news">
-                <h2>News</h2>
-                <div class="news-container">
-                    <div class="news-item">
-                        <span class="news-date">Fall 2025</span>
-                        <span class="news-tag tag-conference">Conference</span>
-                        <p>Attending the <a href="https://simons.berkeley.edu/programs/algorithmic-foundations-emerging-computing-technologies" target="_blank">Algorithmic Foundations of Emerging Computing Technologies program</a> as a visiting graduate student at the Simons Institute, UC Berkeley.</p>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="news-date">Aug 2025</span>
-                        <span class="news-tag tag-service">Workshop</span>
-                        <p>Attended the Workshop on Local Algorithms (WoLA) 2025 at TTIC.</p>
-                    </div>
-
-                    <div class="news-item">
-                        <span class="news-date">Jun 2025</span>
-                        <span class="news-tag tag-service">Workshop</span>
-                        <p>Attended the Women in Theory workshop at the Simons Institute.</p>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="news-date">Jun 2025</span>
-                        <span class="news-tag tag-publication">Publication</span>
-                        <p>Our paper "One-way Communication Complexity of Minimum Vertex Cover in General Graphs" has been published at ICALP 2025!<br>
-                        📹 <a href="https://drive.google.com/file/d/10iJJykkR65ebXWNvznd43lhwOFl0y5SA/view" target="_blank">Watch the presentation</a></p>
-                    </div>
-
-                    <div class="news-item">
-                        <span class="news-date">Nov 2024</span>
-                        <span class="news-tag tag-publication">Publication</span>
-                        <p>Our paper "Galloping in fast-growth natural merge sorts" has been published in Algorithmica.</p>
-                    </div>
-
-                    <div class="news-item">
-                        <span class="news-date">Oct 2024</span>
-                        <span class="news-tag tag-conference">Conference</span>
-                        <p>Attended Symposium on Foundations of Computer Science (FOCS) 2024 in Chicago.</p>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="news-date">Sep 2024</span>
-                        <span class="news-tag tag-service">Service</span>
-                        <p>Started co-organizing the NEU Theory Seminar. Looking forward to hosting great speakers this year!</p>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="news-date">Jan 2024</span>
-                        <span class="news-tag tag-milestone">Milestone</span>
-                        <p>Started my PhD journey at Northeastern University with Professors Rajmohan Rajaraman and Mahsa Derakhshan.</p>
-                    </div>
-
-                </div>
-            </section> -->
-
-            <!-- <section id="contact">
-                <h2>Contact</h2>
-                <div class="contact-info">
-                    <p>I'm always happy to connect with fellow researchers, students, and anyone interested in theoretical computer science!</p>
-                    <p>Feel free to reach out for research discussions, collaboration opportunities, or advice on PhD applications.</p>
-                    <div class="contact-buttons">
-                        <a href="mailto:ghasemi.a@northeastern.edu" class="email-button">✉️ Get in Touch</a>
-                    </div>
-                </div>
-            </section> -->
-        </div>
-    </div>
-
-    <script>
-        // Smooth scroll function
-        function smoothScroll(targetId) {
-            event.preventDefault();
-            const element = document.getElementById(targetId);
-            const navHeight = document.querySelector('nav').offsetHeight;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        }
-
-        // Theme toggle functionality with toast notification
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            localStorage.setItem('themeSetManually', 'true');
-            
-            // Show toast message
-            showThemeMessage(newTheme);
-        }
-
-        function showThemeMessage(theme) {
-            // Remove existing toast if any
-            const existingToast = document.querySelector('.toast');
-            if (existingToast) {
-                existingToast.remove();
-            }
-            
-            // Create new toast
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.textContent = theme === 'dark' ? '🌙 Dark mode enabled' : '☀️ Light mode enabled';
-            document.body.appendChild(toast);
-            
-            // Show toast
-            setTimeout(() => toast.classList.add('show'), 10);
-            
-            // Hide and remove toast after 2 seconds
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => toast.remove(), 300);
-            }, 2000);
-        }
-
-        // Load saved theme preference or auto-detect
-        (function() {
-            const savedTheme = localStorage.getItem('theme');
-            const wasSetManually = localStorage.getItem('themeSetManually');
-            
-            // If user never manually set theme, use automatic time-based switching
-            if (!wasSetManually) {
-                const hour = new Date().getHours();
-                const autoTheme = (hour >= 19 || hour < 7) ? 'dark' : 'light';
-                document.documentElement.setAttribute('data-theme', autoTheme);
-            } else {
-                // Use saved preference
-                document.documentElement.setAttribute('data-theme', savedTheme || 'light');
-            }
-        })();
-
-        // Add scroll-triggered animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.publication, .highlight-box, .news-item');
-            elements.forEach(el => {
-                el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'all 0.6s ease-out';
-                observer.observe(el);
-            });
-        });
-    </script>
-</body>
-</html>
+    <!-- rest of your HTML stays exactly the same -->
+    <!-- (from <button class="theme-toggle"...> downwards) -->
+    <!-- just keep what you already had there -->
