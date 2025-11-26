@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,10 +30,10 @@
             --transition-speed: 0.3s;
         }
         
-        /* Dark Mode (keep it cool + slightly purple) */
+        /* Dark Mode */
         [data-theme="dark"] {
-            --primary-color: #e9d5ff;      /* Light lavender for headings */
-            --accent-color: #c4b5fd;       /* Soft indigo */
+            --primary-color: #e9d5ff;
+            --accent-color: #c4b5fd;
             --text-dark: #f9fafb;
             --text-light: #d1d5db;
             --bg-light: #020617;
@@ -46,21 +47,20 @@
             --card-shadow: rgba(0, 0, 0, 0.4);
         }
 
-        /* Page-specific accent colors */
         body[data-page="research"] {
-            --accent-color: #10b981; /* Green for research */
+            --accent-color: #10b981;
         }
         
         body[data-page="publications"] {
-            --accent-color: #8b5cf6; /* Purple for publications */
+            --accent-color: #8b5cf6;
         }
         
         body[data-page="writing"] {
-            --accent-color: #f59e0b; /* Amber for writing */
+            --accent-color: #f59e0b;
         }
         
         body[data-page="contact"] {
-            --accent-color: #ef4444; /* Red for contact */
+            --accent-color: #ef4444;
         }
 
         body {
@@ -212,9 +212,9 @@
         }
 
         .profile-photo img {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            border-radius: 16px; /* more square */
             object-fit: cover;
             border: 5px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
@@ -280,7 +280,7 @@
         }
 
         .affiliation a {
-            color: #a3d5ff;
+            color: #e0e7ff;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -353,12 +353,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to   { opacity: 1; }
         }
 
         section:last-child {
@@ -398,10 +394,9 @@
             transition: all var(--transition-speed) ease;
         }
 
+        /* --- News / Highlights gallery section --- */
 
-        /* --- News / Honors gallery section --- */
-
-        #news {
+        #highlights {
             margin-top: 20px;
         }
         
@@ -460,33 +455,22 @@
             font-size: 0.85em;
             color: var(--text-dark);
         }
-        .publication {
-            background: var(--bg-white);
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
+
+        /* Publications */
 
         #publications {
             font-size: 0.9em;
         }
         
         .publication {
+            background: var(--bg-white);
             padding: 18px 20px;
             margin-bottom: 14px;
-        }
-        
-        .publication h3 {
-            font-size: 1em;
-            margin-bottom: 6px;
-        }
-        
-        .publication .authors {
-            font-size: 0.9em;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         [data-theme="dark"] .publication {
@@ -516,8 +500,8 @@
 
         .publication h3 {
             color: var(--text-dark);
-            font-size: 1.1em;
-            margin-bottom: 10px;
+            font-size: 1em;
+            margin-bottom: 6px;
             line-height: 1.4;
             font-weight: 600;
         }
@@ -525,14 +509,8 @@
         .publication .authors {
             color: var(--text-light);
             margin-bottom: 8px;
-            font-size: 0.95em;
+            font-size: 0.9em;
             font-weight: 500;
-        }
-
-        .publication .venue {
-            color: var(--accent-color);
-            font-weight: 600;
-            margin-bottom: 10px;
         }
 
         .publication .links {
@@ -557,111 +535,6 @@
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
-        }
-
-
-        .tag-publication {
-            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
-            color: #667eea;
-            border: 1px solid #667eea30;
-        }
-
-        [data-theme="dark"] .tag-publication {
-            background: rgba(96, 165, 250, 0.2);
-            color: #60a5fa;
-            border: 1px solid rgba(96, 165, 250, 0.3);
-        }
-
-        .tag-talk {
-            background: #3498db20;
-            color: #3498db;
-            border: 1px solid #3498db30;
-        }
-
-        .tag-service {
-            background: #2ecc7120;
-            color: #27ae60;
-            border: 1px solid #2ecc7130;
-        }
-
-        .tag-conference {
-            background: #16a08520;
-            color: #16a085;
-            border: 1px solid #16a08530;
-        }
-
-        .tag-milestone {
-            background: #f39c1220;
-            color: #f39c12;
-            border: 1px solid #f39c1230;
-        }
-
-        .news-item p {
-            margin-top: 12px;
-            line-height: 1.6;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            transition: all var(--transition-speed) ease;
-        }
-
-        .contact-info p {
-            margin-bottom: 15px;
-            font-size: 1.05em;
-            color: var(--text-dark);
-            font-weight: 500;
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .email-button, .cv-download-button {
-            display: inline-block;
-            padding: 12px 30px;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .email-button {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #667eea 100%);
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
-        }
-
-        .cv-download-button {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        .email-button:hover, .cv-download-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
-            text-decoration: none;
-        }
-
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
         }
 
         .legal-name {
@@ -694,8 +567,8 @@
             }
 
             .profile-photo img {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
             }
 
             header h1 {
@@ -724,16 +597,6 @@
             .header-link {
                 font-size: 0.9em;
             }
-
-            .contact-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .email-button, .cv-download-button {
-                width: 100%;
-                max-width: 250px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -754,9 +617,10 @@
             }
         }
     </style>
+    
 </head>
 <body data-page="home">
-    <!-- Theme Toggle Button (MOVED TO CORRECT POSITION) -->
+    <!-- Theme Toggle Button -->
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
         <svg class="sun-icon" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
@@ -776,13 +640,14 @@
                     <h1>Negin Maddah</h1>
                     <p class="subtitle">PhD Student in Industrial Engineering</p>
                     <p class="affiliation">
-                        <a href="https://coe.northeastern.edu/" target="_blank">College of Engineering, Northeastern University</a><br>
-                        
+                        <a href="https://coe.northeastern.edu/" target="_blank">
+                            College of Engineering, Northeastern University
+                        </a>
                     </p>
                     <div class="header-links">
                         <a href="NM_resume.pdf" class="header-link" target="_blank">CV</a>
                         <a href="https://scholar.google.com/citations?user=hXWdTswAAAAJ&hl=en&oi=ao" class="header-link" target="_blank">Google Scholar</a>
-                        <a href="https://github.com/neginmaddah?tab=overview&from=2025-10-01&to=2025-10-31" class="header-link" target="_blank">GitHub</a>
+                        <a href="https://github.com/neginmaddah" class="header-link" target="_blank">GitHub</a>
                         <a href="https://www.linkedin.com/in/neginmaddah/" class="header-link" target="_blank">LinkedIn</a>
                         <a href="mailto:maddah.n@northeastern.edu" class="header-link" target="_blank">Contact</a>
                     </div>
@@ -793,108 +658,40 @@
         <nav>
             <ul>
                 <li><a href="#about" onclick="smoothScroll('about')">About</a></li>
+                <li><a href="#highlights" onclick="smoothScroll('highlights')">Highlights</a></li>
                 <li><a href="#research" onclick="smoothScroll('research')">Research</a></li>
                 <li><a href="#publications" onclick="smoothScroll('publications')">Publications</a></li>
-                <li><a href="#news" onclick="smoothScroll('news')">News</a></li> -->
-                <!-- <li><a href="writing.html">Blog</a></li> -->
-                <!-- <li><a href="#contact" onclick="smoothScroll('contact')">Contact</a></li> -->
             </ul>
         </nav>
 
         <div class="content">
-            <section id="about">
-                <h2>About Me</h2>
+            <!-- Intro paragraph (no title, fixed at top) -->
+            <section id="intro">
                 <div class="about-content">
-                    <p>I am a PhD student in the College of Engineering at <a href="https://coe.northeastern.edu/" target="_blank">Northeastern University</a>.
-                    I am a member of <a href="https://sites.google.com/view/magicslab/home" target="_blank">MAGICS Lab (Multi AGent Intelligent Complex Systems,</a>
-                        and my advisor is <a href="https://coe.northeastern.edu/people/heydari-babak/" target="_blank">Babak Heydari</a>. 
+                    <p>
+                        I am a PhD student in the College of Engineering at
+                        <a href="https://coe.northeastern.edu/" target="_blank">Northeastern University</a>.
+                        I am a member of
+                        <a href="https://sites.google.com/view/magicslab/home" target="_blank">
+                            MAGICS Lab (Multi AGent Intelligent Complex Systems)
+                        </a>, and my advisor is
+                        <a href="https://coe.northeastern.edu/people/heydari-babak/" target="_blank">Babak Heydari</a>.
                     </p>
-                    
-                    <p>My research interests is at the intersection of <strong>applied artificial intelligence</strong> and <strong>social science</strong>. Currently, my focus is on analyzing the causaf effect of system-level treatments on users' interaction patterns in digital platform: who is more affected by ChatGPT? what type of users? and why is that?</p>
-                </div>
-
-                <div class="highlight-box">
-                    <p><strong>🎓 Academic Background:</strong></p>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>PhD candidate in <a href="https://mie.northeastern.edu/academics/graduate-studies/phd-inde/" target="_blank">Industrial Engineering</a> at Northeastern University, Boston, MA (2022-2026).</li>
-                        <li>Graduate certificate <a href="https://mie.northeastern.edu/academics/graduate-studies/cert-dae/" target="_blank">Data Analytics Engineering</a> at Northeastern, Boston, MA (2022-2026)</li>
-                        <li>Masters in Industrial Engineering <a href="https://en.industrial.kntu.ac.ir/page-industrialEn9609/en/40/form/pId1176" target="_blank">K. N. Toosi University of Technology</a>, Tehran, Iran (2017-2020).</li>
-                        <li>Undergraduate in Industrial Engineering from <a href="https://www.timeshighereducation.com/world-university-rankings/alzahra-university" target="_blank">University of Alzahra</a>, Tehran, Iran (2013-2017).</li>
-                       
-                    </ul>
-                </div>
-
-                <div class="highlight-box">
-                    <p><strong>📢 Experience:</strong></p>
-                    <p style="margin-top: 10px;">I am an AI Researcher at <a href="https://nezamilab.bwh.harvard.edu/" target="_blank">Harvard Medical School - Nezami Lab</a>. I did my 2025 Summer Internship there, and am wrapping up two papers of applied AI in Healthcare currently.</p>
-                    <p style="margin-top: 10px;">I am a Graduate Teaching Assistant at College of Engineering of Northeastern for a required course of Engineering Management Masters Degree.</p>
-                    <p style="margin-top: 10px;">I have been a Systems and Processes Analyst for four years in the industry in Tehran before starting my PhD: I did these mostly: process mining/ data mining/ dashcoard design/ Product design/ Project Management/ Cross-functional Collaboration with product managers and software development teams.</p>
-                </div>
-
-                <p class="legal-name">
-                    <strong>Note:</strong> My legal name is Negin, but I also go by Megan (I realized it is just easier to say "a coffee for Megan" here in the US cafes.)
-                </p>
-            </section>
-
-            <section id="research">
-                <h2>Research Interests</h2>
-                <div class="about-content">
-                    <p>My research focuses on the intersection of AI/Statistics and social science. I am particularly interested in:</p>
-                    <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
-                        <li><strong>Modeling/Forecasting Users Behaviors or Adverse System Outcomes:</strong> Applying Generative AI (Transformers, CNNs, RNNs, LSTM, GRU, LLMs), Classic ML (XGBoost, KNN, naive bayes, regression/...); </li>
-                        <li><strong>Estimating the Causal Effect of System-Level Treatments:</strong> Using causal inference (regression discontinuity, DiD, event study, synthtic control model.</li>
-                        
-                       
-                    </ul>
+                    <p style="margin-top: 12px;">
+                        My research interests are at the intersection of <strong>applied artificial intelligence</strong>
+                        and <strong>social science</strong>. Currently, my focus is on analyzing the causal effect of
+                        system-level treatments on users' interaction patterns in digital platforms: who is more affected
+                        by ChatGPT, what type of users, and why?
+                    </p>
                 </div>
             </section>
 
-            <section id="publications">
-                <h2>Publications</h2>
-                <p style="margin-top: 8px; margin-bottom: 18px; color: var(--text-light); font-size: 0.9em;">
-                    A selection of my publications. For a complete and up-to-date list, please see my
-                    <a href="https://scholar.google.com/citations?user=hXWdTswAAAAJ&hl=en&oi=ao" target="_blank">Google Scholar profile</a>.
-                </p>
-                
-                <div class="publication">
-                    <h3>Building back better: Modeling decentralized recovery in sociotechnical systems using strategic network dynamics</h3>
-                    <p class="authors">Negin Maddah, Babak Heydari</p>
-                    <div class="links">
-                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S0951832024001595" target="_blank">Reliability Engineering & System Safety</a>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>Platform-Driven Collaboration Patterns: Structural Evolution Over Time and Scale</h3>
-                    <p class="authors">Negin Maddah, Babak Heydari</p>
-                    <div class="links">
-                        <a href="https://ieeexplore.ieee.org/abstract/document/10691640" target="_blank">IEEE Transactions on Computational Social Systems</a>
-                    </div>
-                </div>
-
-                <div class="publication">
-                    <h3>The Shifting Dynamics of Online Knowledge Platforms and the Implications for Generative AI Sustainability</h3>
-                    <p class="authors">Babak Heydari, Negin Maddah</p>
-                    <div class="links">
-                        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5117087" target="_blank">SSRN Archive</a>
-                    </div>
-                </div>
-              
-                <!-- <div class="publication">
-                    <h3>Data-driven performance management of business units using process mining and DEA: case study of an Iranian chain store</h3>
-                    <p class="authors">Negin Maddah, Emad Roghanian</p>
-                    <div class="links">
-                        <a href="https://www.emerald.com/ijppm/article-abstract/72/2/550/164309/Data-driven-performance-management-of-business?redirectedFrom=fulltext" target="_blank">International Journal of Productivity and Performance Management</a>
-                    </div>
-                </div> -->
-            </section>
-
-             <section id="news">
+            <!-- Highlights / News -->
+            <section id="highlights">
                 <h2>News &amp; Highlights</h2>
                 <p class="news-intro">
                     A few recent milestones, talks, and awards I'd like to share.
                 </p>
-
 
                  
                 <div class="news-grid">
