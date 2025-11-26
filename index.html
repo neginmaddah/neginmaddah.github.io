@@ -398,6 +398,68 @@
             transition: all var(--transition-speed) ease;
         }
 
+
+        /* --- News / Honors gallery section --- */
+
+        #news {
+            margin-top: 20px;
+        }
+        
+        .news-intro {
+            margin-bottom: 18px;
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        
+        .news-card {
+            background: var(--bg-light);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 12px var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--card-shadow);
+        }
+        
+        .news-card img,
+        .news-card video {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            max-height: 180px;
+        }
+        
+        .news-card-content {
+            padding: 10px 14px 12px;
+        }
+        
+        .news-card-title {
+            font-size: 0.95em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+        
+        .news-card-meta {
+            font-size: 0.8em;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+        
+        .news-card-text {
+            font-size: 0.85em;
+            color: var(--text-dark);
+        }
         .publication {
             background: var(--bg-white);
             padding: 25px;
@@ -497,7 +559,7 @@
             box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
         }
 
-        .news-container {
+        /* .news-container {
             max-width: 800px;
         }
 
@@ -539,7 +601,7 @@
             text-transform: uppercase;
             margin-right: 10px;
             letter-spacing: 0.5px;
-        }
+        } */
 
         .tag-publication {
             background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
@@ -822,7 +884,7 @@
                 <div class="about-content">
                     <p>My research focuses on the intersection of AI/Statistics and social science. I am particularly interested in:</p>
                     <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
-                        <li><strong>Modeling/Forecasting Users Behaviors or Adverse System Outcomes:</strong> Applying Generative AI (Transformers/CNNs/RNNs/LSTM/GRU/LLMs), Classic ML (XGBoost, KNN, naive bayes, regression/...); </li>
+                        <li><strong>Modeling/Forecasting Users Behaviors or Adverse System Outcomes:</strong> Applying Generative AI (Transformers, CNNs, RNNs, LSTM, GRU, LLMs), Classic ML (XGBoost, KNN, naive bayes, regression/...); </li>
                         <li><strong>Estimating the Causal Effect of System-Level Treatments:</strong> Using causal inference (regression discontinuity, DiD, event study, synthtic control model.</li>
                         
                        
@@ -870,71 +932,77 @@
                 </div> -->
             </section>
 
-            <!-- <section id="news">
-                <h2>News</h2>
-                <div class="news-container">
-                    <div class="news-item">
-                        <span class="news-date">Fall 2025</span>
-                        <span class="news-tag tag-conference">Conference</span>
-                        <p>Attending the <a href="https://simons.berkeley.edu/programs/algorithmic-foundations-emerging-computing-technologies" target="_blank">Algorithmic Foundations of Emerging Computing Technologies program</a> as a visiting graduate student at the Simons Institute, UC Berkeley.</p>
+             <section id="news">
+                <h2>News &amp; Highlights</h2>
+                <p class="news-intro">
+                    A few recent milestones, talks, and awards.
+                </p>
+            
+                <div class="news-grid">
+                    <!-- Item 1: Award -->
+                    <div class="news-card">
+                        <img src="phdaward.png" alt="PhD Merit Award">
+                        <div class="news-card-content">
+                            <div class="news-card-title">PhD Merit Award</div>
+                            <div class="news-card-meta">College of Engineering, Northeastern · 2024</div>
+                            <p class="news-card-text">
+                                Recognized for excellence in research.
+                            </p>
+                        </div>
                     </div>
-                    
-                    <div class="news-item">
-                        <span class="news-date">Aug 2025</span>
-                        <span class="news-tag tag-service">Workshop</span>
-                        <p>Attended the Workshop on Local Algorithms (WoLA) 2025 at TTIC.</p>
+            
+                    <!-- Item 2: Talk / Conference this is a short movie mov file -->
+                    <div class="news-card">
+                        <video src="plenarytalk.mov" controls></video>
+                        <div class="news-card-content">
+                            <div class="news-card-title">Plenary Talk at IC2S2</div>
+                            <div class="news-card-meta">International Conference on Computational Social Science · 2024</div>
+                            <p class="news-card-text">
+                                Presented work on online collaboration patterns as a plenary talk (20 selected out of ~700 submissions).
+                            </p>
+                        </div>
+                    </div>
+            
+                    <!-- Item 3: spotlight poster -->
+                    <div class="news-card">
+                        <img src="spotlight.png" alt="Spotlight poster">
+                        <div class="news-card-content">
+                            <div class="news-card-title">Beat-AI: Early Warning of Post-Operative AFib</div>
+                            <div class="news-card-meta">MIT-MGB AI-Cures Conference . 2025</div>
+                            <p class="news-card-text">
+                                Transformer–GRU model for hour-ahead AF forecasting from wearable data.
+                            </p>
+                        </div>
+                    </div>
+            
+                    <!-- Item 4: our lab -->
+                    <div class="news-card">
+                        <img src="magicslab1.png" alt="MAGICS lab">
+                        <div class="news-card-content">
+                            <div class="news-card-title">Our MAGICS Lab</div>
+                            <div class="news-card-meta">Northeastern, Boston . 2025</div>
+                            <p class="news-card-text">
+                                A photo of my lab!
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="news-item">
-                        <span class="news-date">Jun 2025</span>
-                        <span class="news-tag tag-service">Workshop</span>
-                        <p>Attended the Women in Theory workshop at the Simons Institute.</p>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="news-date">Jun 2025</span>
-                        <span class="news-tag tag-publication">Publication</span>
-                        <p>Our paper "One-way Communication Complexity of Minimum Vertex Cover in General Graphs" has been published at ICALP 2025!<br>
-                        📹 <a href="https://drive.google.com/file/d/10iJJykkR65ebXWNvznd43lhwOFl0y5SA/view" target="_blank">Watch the presentation</a></p>
-                    </div>
-
-                    <div class="news-item">
-                        <span class="news-date">Nov 2024</span>
-                        <span class="news-tag tag-publication">Publication</span>
-                        <p>Our paper "Galloping in fast-growth natural merge sorts" has been published in Algorithmica.</p>
+                    <!-- Item 5: Studio -->
+                    <div class="news-card">
+                        <video src="studio.MP4" controls></video>
+                        <div class="news-card-content">
+                            <div class="news-card-title">My Experience as On-Camera Instructor</div>
+                            <div class="news-card-meta">Northeastern - EDGE Studio, Fall 2025</div>
+                            <p class="news-card-text">
+                                Collaborated in designing and teaching an online course for Engineering Management Master students of NU, and Coursera . 2025.
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="news-item">
-                        <span class="news-date">Oct 2024</span>
-                        <span class="news-tag tag-conference">Conference</span>
-                        <p>Attended Symposium on Foundations of Computer Science (FOCS) 2024 in Chicago.</p>
-                    </div>
                     
-                    <div class="news-item">
-                        <span class="news-date">Sep 2024</span>
-                        <span class="news-tag tag-service">Service</span>
-                        <p>Started co-organizing the NEU Theory Seminar. Looking forward to hosting great speakers this year!</p>
-                    </div>
-                    
-                    <div class="news-item">
-                        <span class="news-date">Jan 2024</span>
-                        <span class="news-tag tag-milestone">Milestone</span>
-                        <p>Started my PhD journey at Northeastern University with Professors Rajmohan Rajaraman and Mahsa Derakhshan.</p>
-                    </div>
-
                 </div>
-            </section> -->
-
-            <!-- <section id="contact">
-                <h2>Contact</h2>
-                <div class="contact-info">
-                    <p>I'm always happy to connect with fellow researchers, students, and anyone interested in theoretical computer science!</p>
-                    <p>Feel free to reach out for research discussions, collaboration opportunities, or advice on PhD applications.</p>
-                    <div class="contact-buttons">
-                        <a href="mailto:ghasemi.a@northeastern.edu" class="email-button">✉️ Get in Touch</a>
-                    </div>
-                </div>
-            </section> -->
+            </section>
+            
         </div>
     </div>
 
