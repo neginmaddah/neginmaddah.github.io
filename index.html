@@ -267,6 +267,8 @@ h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);font-weight:500;lin
    SECTION SCAFFOLD
    ============================================================ */
 section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
+/* legacy deep-link: #publications used to be its own section */
+#publications{display:block;scroll-margin-top:calc(var(--nav-h) + 26px)}
 .band{padding:76px 0}
 .band--alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .sec-head{margin-bottom:40px;max-width:44em}
@@ -312,29 +314,46 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
 /* ============================================================
    RESEARCH
    ============================================================ */
-.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.rcard{
-  position:relative;background:var(--surface);border:1px solid var(--line);
-  border-radius:var(--radius-lg);padding:30px 28px 28px;
-  box-shadow:var(--shadow-sm);overflow:hidden;
-  transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease);
+/* Each thread is one wide row: the argument on the left, the papers that
+   carry it on the right. Keeps the page from running narrow down the middle. */
+.threads{display:flex;flex-direction:column;gap:26px}
+.thread{
+  position:relative;display:grid;grid-template-columns:344px 1fr;gap:34px;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:32px 30px 30px 28px;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .28s var(--ease),border-color .28s var(--ease);
 }
-.rcard::before{
+.thread::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
   background:linear-gradient(90deg,var(--accent),var(--accent-2));
-  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease);
+  border-radius:var(--radius-lg) var(--radius-lg) 0 0;
 }
-.rcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--line-strong)}
-.rcard:hover::before{transform:scaleX(1)}
-.rcard-ico{
+.thread:hover{box-shadow:var(--shadow-md);border-color:var(--line-strong)}
+.thread-side{align-self:start}
+.thread-ico{
   width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
-  background:var(--soft);color:var(--accent);margin-bottom:18px;
+  background:var(--soft);color:var(--accent);margin-bottom:16px;
 }
-.rcard-ico svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.rcard h3{font-size:1.16rem;margin-bottom:10px;line-height:1.3}
-.rcard p{font-size:.93rem;color:var(--ink-soft);margin-bottom:18px}
-.rcard .chips{gap:5px}
-.rcard .chip{font-size:.755rem;padding:3.5px 9px}
+.thread-ico svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.thread-side h3{font-size:1.2rem;margin-bottom:10px;line-height:1.3}
+.thread-side p{font-size:.92rem;color:var(--ink-soft);margin-bottom:16px}
+.thread-side .chips{gap:5px}
+.thread-side .chip{font-size:.755rem;padding:3.5px 9px}
+/* Framework figure slot: one diagram per thread. Uncomment the <figure> in
+   the markup and drop the file in images/ to switch it on. */
+.thread-fig{
+  margin-top:20px;border:1px solid var(--line);border-radius:10px;
+  overflow:hidden;background:var(--soft);
+}
+.thread-fig img{width:100%;height:auto;display:block}
+.thread-fig figcaption{
+  padding:9px 12px;font-size:.775rem;line-height:1.5;
+  color:var(--muted);border-top:1px solid var(--line);background:var(--surface);
+}
+.thread-pubs{display:flex;flex-direction:column;gap:11px;min-width:0}
+.thread-pubs .pub{margin-bottom:0}
+.thread-pubs .pub:hover{transform:none;box-shadow:var(--shadow-md)}
 
 /* ============================================================
    HIGHLIGHTS GALLERY
@@ -552,6 +571,19 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   content:'';position:absolute;left:1px;top:.66em;width:6px;height:2px;
   border-radius:2px;background:var(--accent);opacity:.6;
 }
+/* role text on the left, the photo from that role on the right */
+.tl-body{display:grid;grid-template-columns:1fr 292px;gap:28px;align-items:start}
+.tl-media{margin:0}
+.tl-media .gbody{padding:15px 17px 17px}
+.tl-media .gbody h3{font-size:.98rem}
+.tl-media .gbody p{font-size:.85rem}
+.tl-note{
+  margin-top:14px;padding:13px 16px;border-radius:10px;
+  background:var(--soft);border:1px solid var(--line);
+  font-size:.875rem;line-height:1.6;color:var(--muted);
+}
+.tl-note .self{color:var(--ink);font-weight:600}
+.tl-note em{font-style:italic;color:var(--ink-soft)}
 
 /* ============================================================
    TEACHING / SERVICE / AWARDS
@@ -609,6 +641,17 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 }
 .award-t{display:block;color:var(--ink);font-weight:600;font-size:1.005rem;margin-bottom:2px}
 .award-s{font-size:.9rem;color:var(--muted);line-height:1.55}
+.award-cite{
+  display:block;margin-top:9px;padding-top:9px;
+  border-top:1px dashed var(--line);
+  font-size:.83rem;line-height:1.55;color:var(--muted);
+}
+.award-cite .self{color:var(--ink);font-weight:600}
+.award-cite em{font-style:italic;color:var(--ink-soft)}
+.award-cite .tag{
+  display:inline-block;margin-left:5px;padding:1px 6px;border-radius:5px;
+  background:var(--soft);color:var(--primary);font-size:.7rem;font-weight:600;
+}
 
 /* ============================================================
    FOOTER
@@ -665,8 +708,10 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   .hero-portrait{order:-1;max-width:246px;justify-self:start}
   .hero-portrait::after{inset:12px -12px -12px 12px}
   .about-grid,.footer-grid{grid-template-columns:1fr;gap:38px}
-  .research-grid{grid-template-columns:1fr}
+  .thread{grid-template-columns:1fr;gap:24px;padding:28px 24px 26px}
   .two-col{grid-template-columns:1fr}
+  .tl-body{grid-template-columns:1fr;gap:22px}
+  .tl-media{max-width:340px}
 }
 /* inline links + the CV button stop fitting just under 880px; switch to the drawer */
 @media (max-width:880px){
@@ -720,7 +765,9 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   body{background:#fff;color:#000;font-size:11pt}
   .hero::before{display:none}
   .band{padding:18px 0;border:0}
-  .gcard,.pub,.panel,.facts,.award,.rcard{box-shadow:none;break-inside:avoid}
+  .gcard,.pub,.panel,.facts,.award,.thread{box-shadow:none;break-inside:avoid}
+  .thread{grid-template-columns:1fr;gap:16px}
+  .tl-body{grid-template-columns:1fr}
 }
 </style>
 <script>document.documentElement.classList.add("js");</script>
@@ -736,7 +783,6 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
     <nav class="nav-links" id="navLinks" aria-label="Section navigation">
       <a href="#about">About</a>
       <a href="#research">Research</a>
-      <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#recognition">Recognition</a>
       <a href="#contact">Contact</a>
@@ -983,225 +1029,215 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 
 <!-- ══════════════════ RESEARCH ══════════════════ -->
 <section id="research" class="band">
+  <span id="publications"></span>
   <div class="wrap">
     <div class="sec-head reveal">
-      <p class="eyebrow">Research</p>
+      <p class="eyebrow">Research &amp; publications</p>
       <h2>Three threads, one question</h2>
       <p>
         Open-source production, enterprise process governance, clinical data quality; different
         settings, one underlying problem: what happens to work, and to control over work, when the
-        system changes underneath it.
+        system changes underneath it. Each thread carries its own papers, listed with it.
       </p>
-    </div>
-
-    <div class="research-grid">
-      <article class="rcard reveal">
-        <div class="rcard-ico">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l4-6 4 3 4-7 4 5"/><path d="M3 21h18"/><circle cx="7" cy="11" r="1.4"/><circle cx="11" cy="14" r="1.4"/><circle cx="15" cy="7" r="1.4"/></svg>
-        </div>
-        <h3>AI adoption &amp; the organization of work</h3>
-        <p>
-          How generative AI redistributes participation and knowledge production: contributor renewal and
-          demand composition on Stack Overflow after ChatGPT, and how AI-agent adoption on GitHub separates
-          individual assistance from workflow change, reshaping who authors and who reviews.
-        </p>
-        <div class="chips">
-          <span class="chip">Difference-in-differences</span>
-          <span class="chip">Event studies</span>
-          <span class="chip">Platform event logs</span>
-          <span class="chip">Markov models</span>
-        </div>
-      </article>
-
-      <article class="rcard reveal">
-        <div class="rcard-ico">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
-        </div>
-        <h3>Governance, compliance &amp; trustworthy data</h3>
-        <p>
-          Whether the controls an organization believes it has are the controls it actually enforces.
-          I use blinded, evidence-citing LLM instruments over code review to audit change-approval controls,
-          and benchmark generative imputation to separate how faithfully missing values are reconstructed
-          from how much they improve prediction.
-        </p>
-        <div class="chips">
-          <span class="chip">Process mining</span>
-          <span class="chip">Conformance checking</span>
-          <span class="chip">LLM measurement</span>
-          <span class="chip">Data fidelity</span>
-        </div>
-      </article>
-
-      <article class="rcard reveal">
-        <div class="rcard-ico">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="17" r="2.4"/><circle cx="19" cy="17" r="2.4"/><path d="M12 7.4L5.9 14.9M12 7.4l6.1 7.5M7.4 17h9.2"/></svg>
-        </div>
-        <h3>Networks &amp; sociotechnical resilience</h3>
-        <p>
-          How systems reorganize themselves without a central planner: the structural evolution of online
-          collaboration as platforms scale, and post-disruption recovery modeled as decentralized, bottom-up
-          network formation among heterogeneous agents whose reconnection choices reshape structure over time.
-        </p>
-        <div class="chips">
-          <span class="chip">Strategic network formation</span>
-          <span class="chip">Graph modeling</span>
-          <span class="chip">Agent-based simulation</span>
-          <span class="chip">Network resilience</span>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════ PUBLICATIONS ══════════════════ -->
-<section id="publications" class="band band--alt">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Publications</p>
-      <h2>Selected work</h2>
-      <p>
+      <p class="pub-more" style="margin-top:14px">
         For the complete and current list, see my
-        <a href="https://scholar.google.com/citations?user=hXWdTswAAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Google Scholar profile</a>
+        <a href="https://scholar.google.com/citations?user=hXWdTswAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar profile</a>
         or my <a href="Negin_Maddah_CV.pdf" target="_blank" rel="noopener">CV</a>.
       </p>
     </div>
 
-    <div class="pub-group reveal">
-      <h3>Peer-reviewed journal articles <span class="cnt">3</span></h3>
+    <div class="threads">
 
-      <article class="pub">
-        <div class="pub-n">01</div>
-        <div>
-          <h4>Platform-driven collaboration patterns: structural evolution over time and scale</h4>
-          <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-          <div class="pub-foot">
-            <a class="venue" href="https://ieeexplore.ieee.org/abstract/document/10691640" target="_blank" rel="noopener">
-              IEEE Transactions on Computational Social Systems &middot; 11(6): 7814&ndash;7829
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4L5 15"/></svg>
-            </a>
-            <span class="year">2024</span>
+      <!-- ─────────── thread 1 ─────────── -->
+      <article class="thread reveal">
+        <div class="thread-side">
+          <div class="thread-ico">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l4-6 4 3 4-7 4 5"/><path d="M3 21h18"/><circle cx="7" cy="11" r="1.4"/><circle cx="11" cy="14" r="1.4"/><circle cx="15" cy="7" r="1.4"/></svg>
           </div>
-          <p class="pub-note"><span class="rec">Recognition</span> Plenary talk at IC2S2 2024, University of Pennsylvania (one of 20 selected from 700+ submissions).</p>
+          <h3>AI adoption &amp; the organization of work</h3>
+          <p>
+            What generative AI changes about who takes part in knowledge work and how that work is
+            organized: which contributors stay, what they produce, and whether adoption reshapes the
+            workflow itself or only the individual doing the task.
+          </p>
+          <div class="chips">
+            <span class="chip">Difference-in-differences</span>
+            <span class="chip">Event studies</span>
+            <span class="chip">Platform event logs</span>
+            <span class="chip">Markov models</span>
+          </div>
+          <!-- Framework figure for this thread. Save the diagram as
+               images/framework-ai-adoption.png (or .jpg) and delete these two comment lines.
+          <figure class="thread-fig">
+            <img src="images/framework-ai-adoption.png" loading="lazy" alt="Framework: AI adoption and the organization of work">
+            <figcaption>Framework: AI adoption and the organization of work</figcaption>
+          </figure>
+          -->
+        </div>
+
+        <div class="thread-pubs">
+          <article class="pub">
+            <div class="pub-n">01</div>
+            <div>
+              <h4>Public knowledge production in the generative AI innovation system: selective reconfiguration of Stack Overflow after ChatGPT</h4>
+              <p class="authors">B. Heydari, <span class="self">N. Maddah</span></p>
+              <div class="pub-foot">
+                <span class="venue">Technological Forecasting and Social Change</span>
+                <span class="venue venue--if">Revise &amp; resubmit</span>
+              </div>
+              <p class="pub-note">Examines changes in contributor renewal, demand composition, and answer access following ChatGPT&rsquo;s release.</p>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-n">02</div>
+            <div>
+              <h4>Individual AI-assistance and workflow change in open-source production: evidence from AI-agent adoption</h4>
+              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
+              <div class="pub-foot">
+                <span class="venue venue--if">Working paper</span>
+              </div>
+              <p class="pub-note">Separates an individual AI assistance channel from a workflow channel in AI-agent adoption on GitHub, tracing how each changes what contributors produce and how repositories convert contributions into accepted output; built on an event log of 33.1 million events across 65 repositories, Jan 2021 &ndash; Jun 2026.</p>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-n">03</div>
+            <div>
+              <h4>Technology shock or network feedback? A behavior-calibrated Markov model</h4>
+              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
+              <div class="pub-foot">
+                <span class="venue venue--if">In progress</span>
+              </div>
+              <p class="pub-note">Learns a covariate-dependent model of contributor state transitions from pre-release behavior, embeds it in a multi-agent simulation, and compares simulated counterfactuals with observed trajectories to isolate the direct generative AI shock from the amplification network feedback produces.</p>
+            </div>
+          </article>
         </div>
       </article>
 
-      <article class="pub">
-        <div class="pub-n">02</div>
-        <div>
-          <h4>Building back better: modeling decentralized recovery in sociotechnical systems using strategic network dynamics</h4>
-          <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-          <div class="pub-foot">
-            <a class="venue" href="https://www.sciencedirect.com/science/article/abs/pii/S0951832024001595" target="_blank" rel="noopener">
-              Reliability Engineering &amp; System Safety &middot; 246: 110085
-              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4L5 15"/></svg>
-            </a>
-            <span class="year">2024</span>
+      <!-- ─────────── thread 2 ─────────── -->
+      <article class="thread reveal">
+        <div class="thread-side">
+          <div class="thread-ico">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
           </div>
-          <p class="pub-note"><span class="rec">Recognition</span> Best Presentation Award, CESUN 2025.</p>
+          <h3>Governance, compliance &amp; trustworthy data</h3>
+          <p>
+            Whether the controls an organization believes it has are the controls it actually
+            enforces, and whether the data those decisions rest on can be trusted once it has been
+            reconstructed.
+          </p>
+          <div class="chips">
+            <span class="chip">Process mining</span>
+            <span class="chip">Conformance checking</span>
+            <span class="chip">LLM measurement</span>
+            <span class="chip">Data fidelity</span>
+          </div>
+          <!-- Framework figure for this thread. Save the diagram as
+               images/framework-governance.png (or .jpg) and delete these two comment lines.
+          <figure class="thread-fig">
+            <img src="images/framework-governance.png" loading="lazy" alt="Framework: governance, compliance and trustworthy data">
+            <figcaption>Framework: governance, compliance and trustworthy data</figcaption>
+          </figure>
+          -->
+        </div>
+
+        <div class="thread-pubs">
+          <article class="pub">
+            <div class="pub-n">01</div>
+            <div>
+              <h4>LLM for centralized process compliance checking in decentralized co-creation</h4>
+              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
+              <div class="pub-foot">
+                <span class="venue venue--if">Working paper &middot; target: Information Systems Research / Organization Science</span>
+              </div>
+              <p class="pub-note">Uses a blinded, evidence-citing language-model instrument over 3,834 GitHub code-review cases, checked by an independent second LLM scorer, to audit four change-approval controls across 1,495 sampled changes in 31 projects.</p>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-n">02</div>
+            <div>
+              <h4>Generative AI imputation to preserve data fidelity and outcome prediction</h4>
+              <p class="authors"><span class="self">N. Maddah</span>, A. Ramezani, Q. Jin, J. Wollborn, A. Itoh, J. B. Rabb, F. Mazhude, R. S. Kramer, D. B. Sawyer, R. L. Winslow, F. R. Nezami</p>
+              <div class="pub-foot">
+                <span class="venue">npj Digital Medicine</span>
+                <span class="venue venue--if">Revise &amp; resubmit</span>
+              </div>
+              <p class="pub-note">Benchmarks classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems, distinguishing how faithfully values are reconstructed from how much they improve outcome prediction.</p>
+            </div>
+          </article>
         </div>
       </article>
 
-      <article class="pub">
-        <div class="pub-n">03</div>
-        <div>
-          <h4>Data-driven performance management of business units using process mining and DEA: case study of an Iranian chain store</h4>
-          <p class="authors"><span class="self">N. Maddah</span>, E. Roghanian</p>
-          <div class="pub-foot">
-            <span class="venue">International Journal of Productivity and Performance Management &middot; 72(2): 550&ndash;575</span>
-            <span class="year">2023</span>
+      <!-- ─────────── thread 3 ─────────── -->
+      <article class="thread reveal">
+        <div class="thread-side">
+          <div class="thread-ico">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="17" r="2.4"/><circle cx="19" cy="17" r="2.4"/><path d="M12 7.4L5.9 14.9M12 7.4l6.1 7.5M7.4 17h9.2"/></svg>
           </div>
-          <p class="pub-note"><span class="rec">Industry impact</span> The case-study firm extended a business analyst offer following the performance-management framework proposed in the study.</p>
+          <h3>Networks &amp; sociotechnical resilience</h3>
+          <p>
+            How systems reorganize themselves without a central planner: how collaboration structure
+            evolves as platforms scale, and how networks rebuild after disruption through the
+            reconnection choices of heterogeneous agents.
+          </p>
+          <div class="chips">
+            <span class="chip">Strategic network formation</span>
+            <span class="chip">Graph modeling</span>
+            <span class="chip">Agent-based simulation</span>
+            <span class="chip">Network resilience</span>
+          </div>
+          <!-- Framework figure for this thread. Save the diagram as
+               images/framework-networks.png (or .jpg) and delete these two comment lines.
+          <figure class="thread-fig">
+            <img src="images/framework-networks.png" loading="lazy" alt="Framework: networks and sociotechnical resilience">
+            <figcaption>Framework: networks and sociotechnical resilience</figcaption>
+          </figure>
+          -->
         </div>
-      </article>
-    </div>
 
-    <div class="pub-group reveal">
-      <h3>Manuscripts under revision <span class="cnt">3</span></h3>
+        <div class="thread-pubs">
+          <article class="pub">
+            <div class="pub-n">01</div>
+            <div>
+              <h4>Platform-driven collaboration patterns: structural evolution over time and scale</h4>
+              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
+              <div class="pub-foot">
+                <a class="venue" href="https://ieeexplore.ieee.org/abstract/document/10691640" target="_blank" rel="noopener">
+                  IEEE Transactions on Computational Social Systems &middot; 11(6): 7814&ndash;7829
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4L5 15"/></svg>
+                </a>
+                <span class="year">2024</span>
+              </div>
+              <p class="pub-note"><span class="rec">Recognition</span> Plenary talk at IC2S2 2024, University of Pennsylvania (one of 20 selected from 700+ submissions).</p>
+            </div>
+          </article>
 
-      <article class="pub">
-        <div class="pub-n">04</div>
-        <div>
-          <h4>Public knowledge production in the generative AI innovation system: selective reconfiguration of Stack Overflow after ChatGPT</h4>
-          <p class="authors">B. Heydari, <span class="self">N. Maddah</span></p>
-          <div class="pub-foot">
-            <span class="venue">Technological Forecasting and Social Change</span>
-            <span class="venue venue--if">Revise &amp; resubmit</span>
-          </div>
-          <p class="pub-note">Examines changes in contributor renewal, demand composition, and answer access following ChatGPT&rsquo;s release.</p>
-        </div>
-      </article>
-
-      <article class="pub">
-        <div class="pub-n">05</div>
-        <div>
-          <h4>Generative AI imputation to preserve data fidelity and outcome prediction</h4>
-          <p class="authors"><span class="self">N. Maddah</span>, A. Ramezani, Q. Jin, J. Wollborn, A. Itoh, J. B. Rabb, F. Mazhude, R. S. Kramer, D. B. Sawyer, R. L. Winslow, F. R. Nezami</p>
-          <div class="pub-foot">
-            <span class="venue">npj Digital Medicine</span>
-            <span class="venue venue--if">Revise &amp; resubmit</span>
-          </div>
-          <p class="pub-note">Benchmarks classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems, distinguishing how faithfully values are reconstructed from how much they improve outcome prediction.</p>
-        </div>
-      </article>
-
-      <article class="pub">
-        <div class="pub-n">06</div>
-        <div>
-          <h4>BeatAI: biometrics for real-time atrial arrhythmia tracking using artificial intelligence</h4>
-          <p class="authors">A. Ramezani, <span class="self">N. Maddah</span><span class="tag">co-first author</span>, M. Heine, A. Homaei, L. Simeth, L. Mazuera, A. Osho, J. D. Muehlschlegel, J. Wollborn, F. R. Nezami</p>
-          <div class="pub-foot">
-            <span class="venue">BMC Cardiovascular Disorders</span>
-            <span class="venue venue--if">Revise &amp; resubmit</span>
-          </div>
-          <p class="pub-note"><span class="rec">Recognition</span> Selected spotlight presentation, MIT&ndash;MGB AI-Cures 2025. Develops daily risk classification and hour-ahead forecasting using transformers.</p>
-        </div>
-      </article>
-    </div>
-
-    <div class="pub-group reveal">
-      <h3>Working papers <span class="cnt">3</span></h3>
-
-      <article class="pub">
-        <div class="pub-n">07</div>
-        <div>
-          <h4>Individual AI-assistance and workflow change in open-source production: evidence from AI-agent adoption</h4>
-          <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-          <div class="pub-foot">
-            <span class="venue">Working paper</span>
-          </div>
-          <p class="pub-note">Separates an individual AI assistance channel from a workflow channel in AI-agent adoption on GitHub, tracing how each changes what contributors produce and how repositories convert contributions into accepted output; built on an event log of 33.1 million events across 65 repositories, Jan 2021 &ndash; Jun 2026.</p>
+          <article class="pub">
+            <div class="pub-n">02</div>
+            <div>
+              <h4>Building back better: modeling decentralized recovery in sociotechnical systems using strategic network dynamics</h4>
+              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
+              <div class="pub-foot">
+                <a class="venue" href="https://www.sciencedirect.com/science/article/abs/pii/S0951832024001595" target="_blank" rel="noopener">
+                  Reliability Engineering &amp; System Safety &middot; 246: 110085
+                  <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M7 4h9v9M16 4L5 15"/></svg>
+                </a>
+                <span class="year">2024</span>
+              </div>
+              <p class="pub-note"><span class="rec">Recognition</span> Best Presentation Award, CESUN 2025.</p>
+            </div>
+          </article>
         </div>
       </article>
 
-      <article class="pub">
-        <div class="pub-n">08</div>
-        <div>
-          <h4>LLM for centralized process compliance checking in decentralized co-creation</h4>
-          <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-          <div class="pub-foot">
-            <span class="venue">Working paper &middot; target: Information Systems Research / Organization Science</span>
-          </div>
-          <p class="pub-note">Uses a blinded, evidence-citing language-model instrument over 3,834 GitHub code-review cases, checked by an independent second LLM scorer, to audit four change-approval controls across 1,495 sampled changes in 31 projects.</p>
-        </div>
-      </article>
-
-      <article class="pub">
-        <div class="pub-n">09</div>
-        <div>
-          <h4>Technology shock or network feedback? A behavior-calibrated Markov model</h4>
-          <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-          <div class="pub-foot">
-            <span class="venue">In progress</span>
-          </div>
-          <p class="pub-note">Learns a covariate-dependent model of contributor state transitions from pre-release behavior, embeds it in a multi-agent simulation, and compares simulated counterfactuals with observed trajectories to isolate the direct generative AI shock from the amplification network feedback produces.</p>
-        </div>
-      </article>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════ EXPERIENCE ══════════════════ -->
-<section id="experience" class="band">
+<section id="experience" class="band band--alt">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Experience</p>
@@ -1216,32 +1252,35 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
           <a href="https://sites.google.com/view/magicslab/home" target="_blank" rel="noopener">MAGICS Lab</a>,
           Northeastern University &middot; Boston, MA
         </p>
-        <ul class="tl-list">
-          <li>Dissertation research on governing information systems in the generative AI era: how centralized control coexists with decentralized participation and workflow.</li>
-          <li>Build causal and network analyses over large platform event logs, including 33.1 million events across 65 GitHub repositories.</li>
-          <li>Develop LLM-based measurement instruments for process compliance and code-review auditing.</li>
-          <li>Teach technical sessions for Economic Decision-Making in the Engineering Management program.</li>
-        </ul>
 
-      <div class="gallery photo-strip photo-strip--tight">
-      <article class="gcard reveal">
-        <div class="gmedia">
-          <button class="gcard-btn"
-                  data-full="images/magics-lab.jpg"
-                  data-title="Our MAGICS Lab"
-                  data-meta="Northeastern University, Boston · Spring 2025"
-                  data-desc="The MAGICS Lab (Multi-AGent Intelligent Complex Systems) crew outside Northeastern's College of Engineering.">
-            <img src="images/magics-lab.jpg" width="1400" height="1000" loading="lazy" alt="MAGICS Lab members outside Northeastern University">
-            <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
-          </button>
+        <div class="tl-body">
+          <ul class="tl-list">
+            <li>Dissertation research on governing information systems in the generative AI era: how centralized control coexists with decentralized participation and workflow.</li>
+            <li>Build causal and network analyses over large platform event logs, including 33.1 million events across 65 GitHub repositories.</li>
+            <li>Develop LLM-based measurement instruments for process compliance and code-review auditing.</li>
+            <li>Teach technical sessions for Economic Decision-Making in the Engineering Management program.</li>
+          </ul>
+
+          <aside class="tl-media">
+            <article class="gcard reveal">
+              <div class="gmedia">
+                <button class="gcard-btn"
+                        data-full="images/magics-lab.jpg"
+                        data-title="Our MAGICS Lab"
+                        data-meta="Northeastern University, Boston &middot; Spring 2025"
+                        data-desc="The MAGICS Lab (Multi-AGent Intelligent Complex Systems) crew outside Northeastern's College of Engineering.">
+                  <img src="images/magics-lab.jpg" width="1400" height="1000" loading="lazy" alt="MAGICS Lab members outside Northeastern University">
+                  <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
+                </button>
+              </div>
+              <div class="gbody">
+                <p class="gmeta">Northeastern University, Boston &middot; Spring 2025</p>
+                <h3>Our MAGICS Lab</h3>
+                <p>The people I get to think with every week: the Multi-AGent Intelligent Complex Systems lab.</p>
+              </div>
+            </article>
+          </aside>
         </div>
-        <div class="gbody">
-          <p class="gmeta">Northeastern University, Boston &middot; Spring 2025</p>
-          <h3>Our MAGICS Lab</h3>
-          <p>The people I get to think with every week: the Multi-AGent Intelligent Complex Systems lab.</p>
-        </div>
-      </article>
-      </div>
       </div>
 
       <div class="tl-item">
@@ -1251,48 +1290,59 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
           <a href="https://nezamilab.bwh.harvard.edu/" target="_blank" rel="noopener">Nezami Lab</a>,
           Harvard Medical School &middot; Boston, MA
         </p>
-        <ul class="tl-list">
-          <li>Benchmarked classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems.</li>
-          <li>Built transformer-based daily risk classification and hour-ahead forecasting for atrial arrhythmia after cardiac surgery.</li>
-          <li>Selected as a spotlight presentation at the 2025 MIT&ndash;MGB AI-Cures conference.</li>
-        </ul>
 
-      <div class="gallery photo-strip photo-strip--tight">
-      <article class="gcard reveal">
-        <div class="gmedia">
-          <button class="gcard-btn"
-                  data-full="images/harvard-nezami-lab.jpg"
-                  data-title="Nezami Lab at a poster session"
-                  data-meta="Harvard Medical School &amp; Brigham and Women's Hospital · 2025"
-                  data-desc="With the Nezami Lab team during a research poster session. I spent May to December 2025 there as an AI research intern, working on generative imputation for electronic health records and on real-time arrhythmia tracking after cardiac surgery.">
-            <img src="images/harvard-nezami-lab.jpg" width="1400" height="1050" loading="lazy" alt="Group photo of the Nezami Lab team at a research poster session">
-            <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
-          </button>
+        <div class="tl-body">
+          <ul class="tl-list">
+            <li>Benchmarked classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems.</li>
+            <li>Built transformer-based daily risk classification and hour-ahead forecasting for atrial arrhythmia after cardiac surgery.</li>
+            <li>Selected as a spotlight presentation at the 2025 MIT&ndash;MGB AI-Cures conference.</li>
+          </ul>
+
+          <aside class="tl-media">
+            <article class="gcard reveal">
+              <div class="gmedia">
+                <button class="gcard-btn"
+                        data-full="images/harvard-nezami-lab.jpg"
+                        data-title="Nezami Lab at a poster session"
+                        data-meta="Harvard Medical School &amp; Brigham and Women's Hospital &middot; 2025"
+                        data-desc="With the Nezami Lab team during a research poster session. I spent May to December 2025 there as an AI research intern, working on generative imputation for electronic health records and on real-time arrhythmia tracking after cardiac surgery.">
+                  <img src="images/harvard-nezami-lab.jpg" width="1400" height="1050" loading="lazy" alt="Group photo of the Nezami Lab team at a research poster session">
+                  <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
+                </button>
+              </div>
+              <div class="gbody">
+                <p class="gmeta">Harvard Medical School &amp; BWH &middot; 2025</p>
+                <h3>An AI research internship at Harvard</h3>
+                <p>Our team at a research poster session. I spent May to December 2025 in the lab, working on generative imputation for health records and on real-time cardiac arrhythmia tracking.</p>
+              </div>
+            </article>
+          </aside>
         </div>
-        <div class="gbody">
-          <p class="gmeta">Harvard Medical School &amp; BWH &middot; 2025</p>
-          <h3>An AI research internship at Harvard</h3>
-          <p>Our team at a research poster session. I spent May to December 2025 in the lab, working on generative imputation for health records and on real-time cardiac arrhythmia tracking.</p>
-        </div>
-      </article>
-      </div>
       </div>
 
       <div class="tl-item">
         <span class="tl-when">2018 &ndash; 2021</span>
         <h3>Systems &amp; Processes Analyst</h3>
         <p class="tl-where">Behfa Consulting Group &amp; Golrang Industrial Group &middot; Tehran, Iran</p>
+
         <ul class="tl-list">
           <li>Managed data and process mining projects using enterprise-system logs to diagnose bottlenecks, assess process compliance, and inform system improvements.</li>
           <li>Gathered software requirements through stakeholder interviews and system benchmarking; worked with developers on feature testing, validation, deployment, and user adoption.</li>
         </ul>
+        <p class="tl-note">
+          This work became a peer-reviewed case study:
+          <em>Data-driven performance management of business units using process mining and DEA</em>
+          (<span class="self">N. Maddah</span>, E. Roghanian), <em>International Journal of Productivity
+          and Performance Management</em> 72(2): 550&ndash;575, 2023. The case-study firm extended a
+          business analyst offer following the framework proposed in the study.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════ RECOGNITION ══════════════════ -->
-<section id="recognition" class="band band--alt">
+<section id="recognition" class="band">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Recognition</p>
@@ -1324,7 +1374,13 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
         <div class="award-body">
           <span class="award-y">2025</span>
           <span class="award-t">Spotlight Presentation, MIT&ndash;MGB AI-Cures</span>
-          <span class="award-s">Selected for the BeatAI work on real-time atrial arrhythmia tracking.</span>
+          <span class="award-s">Selected for the BeatAI work: transformer-based daily risk classification and hour-ahead forecasting of atrial arrhythmia after cardiac surgery, from wearable cardiac monitoring.</span>
+          <span class="award-cite">
+            <em>BeatAI: biometrics for real-time atrial arrhythmia tracking using artificial intelligence.</em>
+            A. Ramezani, <span class="self">N. Maddah</span><span class="tag">co-first author</span>, M. Heine,
+            A. Homaei, L. Simeth, L. Mazuera, A. Osho, J. D. Muehlschlegel, J. Wollborn, F. R. Nezami
+            &middot; BMC Cardiovascular Disorders, revise &amp; resubmit.
+          </span>
         </div>
       </div>
       <div class="award award--media">

@@ -6,3 +6,16 @@
 
 # Local backup of the previous site version (git history is the real backup)
 index_v1_backup.html
+
+# Original full-size media and old CV versions: kept locally (OneDrive) as the
+# backup, untracked so GitHub Pages only serves the optimized files in images/
+NM_CV.docx
+NM_CV.pdf
+NM_resume.pdf
+magicslab1.png
+me2.png
+net1.png
+net2.png
+phdaward.png
+spotlight.png
+studiob.png
