@@ -318,7 +318,7 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
    carry it on the right. Keeps the page from running narrow down the middle. */
 .threads{display:flex;flex-direction:column;gap:26px}
 .thread{
-  position:relative;display:grid;grid-template-columns:344px 1fr;gap:34px;
+  position:relative;display:grid;grid-template-columns:290px 1fr;gap:30px;
   background:var(--surface);border:1px solid var(--line);
   border-radius:var(--radius-lg);padding:32px 30px 30px 28px;
   box-shadow:var(--shadow-sm);
@@ -354,6 +354,8 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
 .thread-pubs{display:flex;flex-direction:column;gap:11px;min-width:0}
 .thread-pubs .pub{margin-bottom:0}
 .thread-pubs .pub:hover{transform:none;box-shadow:var(--shadow-md)}
+/* stage of the work, read straight off the title rather than below the authors */
+.pub-stage{margin:0 0 10px}
 
 /* ============================================================
    HIGHLIGHTS GALLERY
@@ -1093,10 +1095,8 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
             <div class="pub-n">02</div>
             <div>
               <h4>Individual AI-assistance and workflow change in open-source production: evidence from AI-agent adoption</h4>
+              <p class="pub-stage"><span class="venue venue--if">Working paper</span></p>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-              <div class="pub-foot">
-                <span class="venue venue--if">Working paper</span>
-              </div>
               <p class="pub-note">Separates an individual AI assistance channel from a workflow channel in AI-agent adoption on GitHub, tracing how each changes what contributors produce and how repositories convert contributions into accepted output; built on an event log of 33.1 million events across 65 repositories, Jan 2021 &ndash; Jun 2026.</p>
             </div>
           </article>
@@ -1105,72 +1105,14 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
             <div class="pub-n">03</div>
             <div>
               <h4>Technology shock or network feedback? A behavior-calibrated Markov model</h4>
+              <p class="pub-stage"><span class="venue venue--if">In progress</span></p>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-              <div class="pub-foot">
-                <span class="venue venue--if">In progress</span>
-              </div>
               <p class="pub-note">Learns a covariate-dependent model of contributor state transitions from pre-release behavior, embeds it in a multi-agent simulation, and compares simulated counterfactuals with observed trajectories to isolate the direct generative AI shock from the amplification network feedback produces.</p>
             </div>
           </article>
         </div>
       </article>
-
       <!-- ─────────── thread 2 ─────────── -->
-      <article class="thread reveal">
-        <div class="thread-side">
-          <div class="thread-ico">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>Governance, compliance &amp; trustworthy data</h3>
-          <p>
-            Whether the controls an organization believes it has are the controls it actually
-            enforces, and whether the data those decisions rest on can be trusted once it has been
-            reconstructed.
-          </p>
-          <div class="chips">
-            <span class="chip">Process mining</span>
-            <span class="chip">Conformance checking</span>
-            <span class="chip">LLM measurement</span>
-            <span class="chip">Data fidelity</span>
-          </div>
-          <!-- Framework figure for this thread. Save the diagram as
-               images/framework-governance.png (or .jpg) and delete these two comment lines.
-          <figure class="thread-fig">
-            <img src="images/framework-governance.png" loading="lazy" alt="Framework: governance, compliance and trustworthy data">
-            <figcaption>Framework: governance, compliance and trustworthy data</figcaption>
-          </figure>
-          -->
-        </div>
-
-        <div class="thread-pubs">
-          <article class="pub">
-            <div class="pub-n">04</div>
-            <div>
-              <h4>LLM for centralized process compliance checking in decentralized co-creation</h4>
-              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-              <div class="pub-foot">
-                <span class="venue venue--if">Working paper &middot; target: Information Systems Research / Organization Science</span>
-              </div>
-              <p class="pub-note">Uses a blinded, evidence-citing language-model instrument over 3,834 GitHub code-review cases, checked by an independent second LLM scorer, to audit four change-approval controls across 1,495 sampled changes in 31 projects.</p>
-            </div>
-          </article>
-
-          <article class="pub">
-            <div class="pub-n">05</div>
-            <div>
-              <h4>Generative AI imputation to preserve data fidelity and outcome prediction</h4>
-              <p class="authors"><span class="self">N. Maddah</span>, A. Ramezani, Q. Jin, J. Wollborn, A. Itoh, J. B. Rabb, F. Mazhude, R. S. Kramer, D. B. Sawyer, R. L. Winslow, F. R. Nezami</p>
-              <div class="pub-foot">
-                <span class="venue">npj Digital Medicine</span>
-                <span class="venue venue--if">Revise &amp; resubmit</span>
-              </div>
-              <p class="pub-note">Benchmarks classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems, distinguishing how faithfully values are reconstructed from how much they improve outcome prediction.</p>
-            </div>
-          </article>
-        </div>
-      </article>
-
-      <!-- ─────────── thread 3 ─────────── -->
       <article class="thread reveal">
         <div class="thread-side">
           <div class="thread-ico">
@@ -1199,7 +1141,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 
         <div class="thread-pubs">
           <article class="pub">
-            <div class="pub-n">06</div>
+            <div class="pub-n">04</div>
             <div>
               <h4>Platform-driven collaboration patterns: structural evolution over time and scale</h4>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
@@ -1215,7 +1157,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
           </article>
 
           <article class="pub">
-            <div class="pub-n">07</div>
+            <div class="pub-n">05</div>
             <div>
               <h4>Building back better: modeling decentralized recovery in sociotechnical systems using strategic network dynamics</h4>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
@@ -1227,6 +1169,58 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
                 <span class="year">2024</span>
               </div>
               <p class="pub-note"><span class="rec">Recognition</span> Best Presentation Award, CESUN 2025.</p>
+            </div>
+          </article>
+        </div>
+      </article>
+      <!-- ─────────── thread 3 ─────────── -->
+      <article class="thread reveal">
+        <div class="thread-side">
+          <div class="thread-ico">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Governance, compliance &amp; trustworthy data</h3>
+          <p>
+            Whether the controls an organization believes it has are the controls it actually
+            enforces, and whether the data those decisions rest on can be trusted once it has been
+            reconstructed.
+          </p>
+          <div class="chips">
+            <span class="chip">Process mining</span>
+            <span class="chip">Conformance checking</span>
+            <span class="chip">LLM measurement</span>
+            <span class="chip">Data fidelity</span>
+          </div>
+          <!-- Framework figure for this thread. Save the diagram as
+               images/framework-governance.png (or .jpg) and delete these two comment lines.
+          <figure class="thread-fig">
+            <img src="images/framework-governance.png" loading="lazy" alt="Framework: governance, compliance and trustworthy data">
+            <figcaption>Framework: governance, compliance and trustworthy data</figcaption>
+          </figure>
+          -->
+        </div>
+
+        <div class="thread-pubs">
+          <article class="pub">
+            <div class="pub-n">06</div>
+            <div>
+              <h4>LLM for centralized process compliance checking in decentralized co-creation</h4>
+              <p class="pub-stage"><span class="venue venue--if">Working paper &middot; target: Information Systems Research / Organization Science</span></p>
+              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
+              <p class="pub-note">Uses a blinded, evidence-citing language-model instrument over 3,834 GitHub code-review cases, checked by an independent second LLM scorer, to audit four change-approval controls across 1,495 sampled changes in 31 projects.</p>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-n">07</div>
+            <div>
+              <h4>Generative AI imputation to preserve data fidelity and outcome prediction</h4>
+              <p class="authors"><span class="self">N. Maddah</span>, A. Ramezani, Q. Jin, J. Wollborn, A. Itoh, J. B. Rabb, F. Mazhude, R. S. Kramer, D. B. Sawyer, R. L. Winslow, F. R. Nezami</p>
+              <div class="pub-foot">
+                <span class="venue">npj Digital Medicine</span>
+                <span class="venue venue--if">Revise &amp; resubmit</span>
+              </div>
+              <p class="pub-note">Benchmarks classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems, distinguishing how faithfully values are reconstructed from how much they improve outcome prediction.</p>
             </div>
           </article>
         </div>
