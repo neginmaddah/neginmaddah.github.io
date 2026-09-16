@@ -643,6 +643,15 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 }
 .award-t{display:block;color:var(--ink);font-weight:600;font-size:1.005rem;margin-bottom:2px}
 .award-s{font-size:.9rem;color:var(--muted);line-height:1.55}
+.award-pts{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+.award-pts li{
+  position:relative;padding-left:15px;
+  font-size:.875rem;line-height:1.55;color:var(--muted);
+}
+.award-pts li::before{
+  content:'';position:absolute;left:0;top:.62em;width:6px;height:2px;
+  border-radius:2px;background:var(--accent);opacity:.6;
+}
 .award-cite{
   display:block;margin-top:9px;padding-top:9px;
   border-top:1px dashed var(--line);
@@ -1398,8 +1407,11 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
         </div>
         <div class="award-body">
           <span class="award-y">2024</span>
-          <span class="award-t">Plenary Talk, IC2S2</span>
-          <span class="award-s">International Conference on Computational Social Science, University of Pennsylvania (one of 20 talks selected from 700+ submissions).</span>
+          <span class="award-t">Plenary Talk to a 500+ audience at IC2S2</span>
+          <span class="award-s">International Conference on Computational Social Science, University of Pennsylvania.</span>
+          <ul class="award-pts">
+            <li>One of 20 talks selected from 700+ submissions.</li>
+          </ul>
         </div>
       </div>
       <div class="award award--media">
