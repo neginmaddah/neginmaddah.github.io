@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# Claude Code session settings
+.claude/
+
+# Local backup of the previous site version (git history is the real backup)
+index_v1_backup.html
