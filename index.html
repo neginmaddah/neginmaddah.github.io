@@ -574,7 +574,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   border-radius:2px;background:var(--accent);opacity:.6;
 }
 /* role text on the left, the photo from that role on the right */
-.tl-body{display:grid;grid-template-columns:1fr 292px;gap:28px;align-items:start}
+.tl-item--media{display:grid;grid-template-columns:1fr 292px;gap:28px;align-items:start}
 .tl-media{margin:0}
 .tl-media .gbody{padding:15px 17px 17px}
 .tl-media .gbody h3{font-size:.98rem}
@@ -722,7 +722,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   .about-grid,.footer-grid{grid-template-columns:1fr;gap:38px}
   .thread{grid-template-columns:1fr;gap:24px;padding:28px 24px 26px}
   .two-col{grid-template-columns:1fr}
-  .tl-body{grid-template-columns:1fr;gap:22px}
+  .tl-item--media{grid-template-columns:1fr;gap:22px}
   .tl-media{max-width:340px}
 }
 /* inline links + the CV button stop fitting just under 880px; switch to the drawer */
@@ -779,7 +779,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   .band{padding:18px 0;border:0}
   .gcard,.pub,.panel,.facts,.award,.thread{box-shadow:none;break-inside:avoid}
   .thread{grid-template-columns:1fr;gap:16px}
-  .tl-body{grid-template-columns:1fr}
+  .tl-item--media{grid-template-columns:1fr}
 }
 </style>
 <script>document.documentElement.classList.add("js");</script>
@@ -1249,76 +1249,76 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
     </div>
 
     <div class="tl reveal">
-      <div class="tl-item">
-        <span class="tl-when">Jan 2022 &ndash; Present</span>
-        <h3>Graduate Research &amp; Teaching Assistant</h3>
-        <p class="tl-where">
-          <a href="https://sites.google.com/view/magicslab/home" target="_blank" rel="noopener">MAGICS Lab</a>,
-          Northeastern University &middot; Boston, MA
-        </p>
-
-        <div class="tl-body">
+      <div class="tl-item tl-item--media">
+        <div class="tl-main">
+          <span class="tl-when">Jan 2022 &ndash; Present</span>
+          <h3>Graduate Research &amp; Teaching Assistant</h3>
+          <p class="tl-where">
+            <a href="https://sites.google.com/view/magicslab/home" target="_blank" rel="noopener">MAGICS Lab</a>,
+            Northeastern University &middot; Boston, MA
+          </p>
           <ul class="tl-list">
             <li>Dissertation research on governing information systems in the generative AI era: how centralized control coexists with decentralized participation and workflow.</li>
             <li>Teach technical sessions for Economic Decision-Making in the Engineering Management program.</li>
           </ul>
-
-          <aside class="tl-media">
-            <article class="gcard reveal">
-              <div class="gmedia">
-                <button class="gcard-btn"
-                        data-full="images/magics-lab.jpg"
-                        data-title="Our MAGICS Lab"
-                        data-meta="Northeastern University, Boston &middot; Spring 2025"
-                        data-desc="The MAGICS Lab (Multi-AGent Intelligent Complex Systems) crew outside Northeastern's College of Engineering.">
-                  <img src="images/magics-lab.jpg" width="1400" height="1000" loading="lazy" alt="MAGICS Lab members outside Northeastern University">
-                  <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
-                </button>
-              </div>
-              <div class="gbody">
-                <p class="gmeta">Northeastern University, Boston &middot; Spring 2025</p>
-                <h3>Our MAGICS Lab</h3>
-              </div>
-            </article>
-          </aside>
         </div>
+
+        <aside class="tl-media">
+          <article class="gcard reveal">
+            <div class="gmedia">
+              <button class="gcard-btn"
+              data-full="images/magics-lab.jpg"
+              data-title="Our MAGICS Lab"
+              data-meta="Northeastern University, Boston &middot; Spring 2025"
+              data-desc="The MAGICS Lab (Multi-AGent Intelligent Complex Systems) crew outside Northeastern's College of Engineering.">
+              <img src="images/magics-lab.jpg" width="1400" height="1000" loading="lazy" alt="MAGICS Lab members outside Northeastern University">
+              <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
+              </button>
+            </div>
+            <div class="gbody">
+              <p class="gmeta">Northeastern University, Boston &middot; Spring 2025</p>
+              <h3>Our MAGICS Lab</h3>
+            </div>
+          </article>
+        </aside>
       </div>
 
-      <div class="tl-item">
-        <span class="tl-when">May 2025 &ndash; Dec 2025</span>
-        <h3>AI Researcher Intern</h3>
-        <p class="tl-where">
-          <a href="https://nezamilab.bwh.harvard.edu/" target="_blank" rel="noopener">Nezami Lab</a>,
-          Harvard Medical School &middot; Boston, MA
-        </p>
 
-        <div class="tl-body">
+      <div class="tl-item tl-item--media">
+        <div class="tl-main">
+          <span class="tl-when">May 2025 &ndash; Dec 2025</span>
+          <h3>AI Researcher Intern</h3>
+          <p class="tl-where">
+            <a href="https://nezamilab.bwh.harvard.edu/" target="_blank" rel="noopener">Nezami Lab</a>,
+            Harvard Medical School &middot; Boston, MA
+          </p>
           <ul class="tl-list">
             <li>Benchmarked classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems.</li>
             <li>Built transformer-based daily risk classification and hour-ahead forecasting for atrial arrhythmia after cardiac surgery.</li>
             <li>Selected as a spotlight presentation at the 2025 MIT&ndash;MGB AI-Cures conference.</li>
           </ul>
-
-          <aside class="tl-media">
-            <article class="gcard reveal">
-              <div class="gmedia">
-                <button class="gcard-btn"
-                        data-full="images/harvard-nezami-lab.jpg"
-                        data-title="Nezami Lab at a poster session"
-                        data-meta="Harvard Medical School &amp; Brigham and Women's Hospital &middot; 2025"
-                        data-desc="With the Nezami Lab team during a research poster session. I spent May to December 2025 there as an AI research intern, working on generative imputation for electronic health records and on real-time arrhythmia tracking after cardiac surgery.">
-                  <img src="images/harvard-nezami-lab.jpg" width="1400" height="1050" loading="lazy" alt="Group photo of the Nezami Lab team at a research poster session">
-                  <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
-                </button>
-              </div>
-              <div class="gbody">
-                <p class="gmeta">Harvard Medical School &amp; BWH &middot; 2025</p>
-                <h3>AI researcher intern at Harvard</h3>
-              </div>
-            </article>
-          </aside>
         </div>
+
+        <aside class="tl-media">
+          <article class="gcard reveal">
+            <div class="gmedia">
+              <button class="gcard-btn"
+              data-full="images/harvard-nezami-lab.jpg"
+              data-title="Nezami Lab at a poster session"
+              data-meta="Harvard Medical School &amp; Brigham and Women's Hospital &middot; 2025"
+              data-desc="With the Nezami Lab team during a research poster session. I spent May to December 2025 there as an AI research intern, working on generative imputation for electronic health records and on real-time arrhythmia tracking after cardiac surgery.">
+              <img src="images/harvard-nezami-lab.jpg" width="1400" height="1050" loading="lazy" alt="Group photo of the Nezami Lab team at a research poster session">
+              <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
+              </button>
+            </div>
+            <div class="gbody">
+              <p class="gmeta">Harvard Medical School &amp; BWH &middot; 2025</p>
+              <h3>AI researcher intern at Harvard</h3>
+            </div>
+          </article>
+        </aside>
       </div>
+
 
       <div class="tl-item">
         <span class="tl-when">2018 &ndash; 2021</span>
