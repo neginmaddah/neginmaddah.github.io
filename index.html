@@ -367,7 +367,24 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
 }
 .pub-media figcaption{
   margin-top:10px;font-size:.845rem;line-height:1.55;color:var(--muted);
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;
+  justify-content:space-between;
 }
+.pub-media .cap{flex:1 1 320px}
+/* text link rather than an embed: no player JS, no third-party cookies */
+.yt-link{
+  display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;
+  padding:6px 13px;border-radius:999px;
+  background:var(--soft);border:1px solid var(--line);
+  font-size:.815rem;font-weight:600;color:var(--primary);
+  transition:all .2s var(--ease);
+}
+.yt-link:hover{color:#fff;background:var(--accent);border-color:var(--accent)}
+[data-theme="dark"] .yt-link:hover{color:#150f22}
+.yt-link svg{width:15px;height:15px;flex:none}
+.yt-link svg .yt-play{fill:var(--surface)}
+.yt-link:hover svg .yt-play{fill:var(--accent)}
+[data-theme="dark"] .yt-link:hover svg .yt-play{fill:#150f22}
 .pub-media .rec{
   display:inline-block;margin-right:7px;padding:1.5px 8px;border-radius:5px;
   background:var(--soft);color:var(--primary);border:1px solid var(--line);
@@ -1182,8 +1199,14 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
             <video src="building-back-better.mp4" poster="images/bbb-poster.jpg"
                    controls preload="none" playsinline></video>
             <figcaption>
-              <span class="rec">Method</span>
-              How the model works, step by step.
+              <span class="cap">
+                <span class="rec">Method</span>
+                How the model works, step by step.
+              </span>
+              <a class="yt-link" href="https://youtu.be/W-uyOy4tcuU" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a2.6 2.6 0 00-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.6 2.6 0 002.4 7.2 27 27 0 002 12a27 27 0 00.4 4.8 2.6 2.6 0 001.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.6 2.6 0 001.8-1.8A27 27 0 0022 12a27 27 0 00-.4-4.8z"/><path class="yt-play" d="M10 14.7V9.3L14.7 12z"/></svg>
+                Watch on YouTube
+              </a>
             </figcaption>
           </figure>
         </div>
