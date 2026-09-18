@@ -354,6 +354,27 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
 .thread-pubs{display:flex;flex-direction:column;gap:11px;min-width:0}
 .thread-pubs .pub{margin-bottom:0}
 .thread-pubs .pub:hover{transform:none;box-shadow:var(--shadow-md)}
+/* method animation attached to the paper above it */
+.pub-media{
+  margin:-4px 0 0;padding:16px 18px 18px;
+  background:var(--surface);border:1px solid var(--line);
+  border-top:0;border-radius:0 0 var(--radius) var(--radius);
+  box-shadow:var(--shadow-sm);
+}
+.pub-media video{
+  width:100%;height:auto;display:block;border-radius:9px;
+  border:1px solid var(--line);background:#fff;
+}
+.pub-media figcaption{
+  margin-top:10px;font-size:.845rem;line-height:1.55;color:var(--muted);
+}
+.pub-media .rec{
+  display:inline-block;margin-right:7px;padding:1.5px 8px;border-radius:5px;
+  background:var(--soft);color:var(--primary);border:1px solid var(--line);
+  font-size:.7rem;font-weight:700;letter-spacing:.055em;text-transform:uppercase;
+  vertical-align:1px;
+}
+.thread-pubs .pub:has(+ .pub-media){border-radius:var(--radius) var(--radius) 0 0}
 /* stage of the work, read straight off the title rather than below the authors */
 .pub-stage{margin:0 0 10px}
 
@@ -1156,6 +1177,19 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
               <p class="pub-note"><span class="rec">Recognition</span> Best Presentation Award, CESUN 2025.</p>
             </div>
           </article>
+
+          <figure class="pub-media reveal">
+            <video src="building-back-better.mp4" poster="images/bbb-poster.jpg"
+                   controls preload="none" playsinline></video>
+            <figcaption>
+              <span class="rec">Method</span>
+              How the model works, step by step: agents weigh the cost and benefit of each tie,
+              the network settles into pairwise stability, a disturbance propagates outward, and
+              agents reconnect one decision at a time until a new equilibrium forms. The second
+              half maps those decentralized outcomes against the efficient architecture to show
+              where an intervention can help.
+            </figcaption>
+          </figure>
         </div>
       </article>
       <!-- ─────────── thread 3 ─────────── -->
