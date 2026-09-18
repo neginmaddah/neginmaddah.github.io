@@ -630,6 +630,36 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
    TEACHING / SERVICE / AWARDS
    ============================================================ */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
+/* full-width intro paragraph above the three panels */
+.about-lede{max-width:none;margin-bottom:34px}
+.about-lede p{font-size:1.045rem;line-height:1.72;color:var(--ink-soft);margin-bottom:14px}
+.about-lede p:last-child{margin-bottom:0}
+.about-lede strong{color:var(--ink);font-weight:600}
+/* honours laid out as cards: two across, then three across */
+.awards-row{display:grid;gap:18px;margin-bottom:18px}
+.awards-row--2{grid-template-columns:repeat(2,1fr)}
+.awards-row--3{grid-template-columns:repeat(3,1fr)}
+.awards-row .award--card{
+  display:flex;flex-direction:column;gap:0;padding:0;overflow:hidden;
+  grid-template-columns:none;align-items:stretch;
+}
+.awards-row .award--card .award-media{
+  aspect-ratio:16/10;border-radius:0;border:0;
+  border-bottom:1px solid var(--line);width:100%;
+}
+.awards-row .award--card .award-body{padding:16px 18px 18px}
+.awards-row .award--card:hover{transform:translateY(-3px)}
+/* methods + tools, sitting as the last block of the research section */
+.toolbox{display:grid;grid-template-columns:1fr;gap:14px}
+.toolbox h4{
+  font-family:var(--font-body);font-size:.735rem;font-weight:700;
+  letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+}
+.toolbox .tb{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow-sm);
+}
 .panel{
   background:var(--surface);border:1px solid var(--line);
   border-radius:var(--radius-lg);padding:30px 30px 28px;box-shadow:var(--shadow-sm);
@@ -759,6 +789,8 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   .hero-portrait::after{inset:12px -12px -12px 12px}
   .about-grid,.footer-grid{grid-template-columns:1fr;gap:38px}
   .thread{grid-template-columns:1fr;gap:24px;padding:28px 24px 26px}
+  .three-col{grid-template-columns:1fr;gap:18px}
+  .awards-row--2,.awards-row--3{grid-template-columns:1fr}
   .two-col{grid-template-columns:1fr}
   .tl-item--media{grid-template-columns:1fr;gap:22px}
   .tl-media{max-width:340px}
@@ -832,9 +864,9 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 
     <nav class="nav-links" id="navLinks" aria-label="Section navigation">
       <a href="#about">About</a>
+      <a href="#recognition">Recognition</a>
       <a href="#research">Research</a>
       <a href="#experience">Experience</a>
-      <a href="#recognition">Recognition</a>
       <a href="#contact">Contact</a>
     </nav>
 
@@ -876,7 +908,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 
         <p class="status-pill">
           <span class="status-dot" aria-hidden="true"></span>
-          PhD expected May 2027 &middot; Boston, MA
+          PhD expected May 2027 &middot; on the faculty job market
         </p>
 
         <div class="hero-links">
@@ -909,99 +941,103 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 <!-- ══════════════════ ABOUT ══════════════════ -->
 <section id="about" class="band band--alt">
   <div class="wrap">
-    <div class="about-grid">
-      <div class="reveal">
-        <div class="sec-head">
-          <p class="eyebrow">About</p>
-          <h2>Who keeps contributing when AI enters the workflow</h2>
-        </div>
+    <div class="sec-head reveal">
+      <p class="eyebrow">About</p>
+      <h2>How AI adoption reorganizes work, and whether control holds</h2>
+    </div>
 
-        <div class="prose">
-          <p>
-            I am a PhD candidate in the College of Engineering at
-            <a href="https://coe.northeastern.edu/" target="_blank" rel="noopener">Northeastern University</a>,
-            working in the
-            <a href="https://sites.google.com/view/magicslab/home" target="_blank" rel="noopener">MAGICS Lab</a>
-            with my advisor
-            <a href="https://coe.northeastern.edu/people/heydari-babak/" target="_blank" rel="noopener">Babak Heydari</a>.
-            My dissertation (<em>Governing Information Systems in the Generative AI Era: Centralized
-            Control of Decentralized Participation and Workflow</em>) is in progress, and I expect to
-            graduate in May 2027.
-          </p>
-          <p>
-            The question underneath all of my work is what happens to <strong>the organization of work</strong>
-            when a general-purpose technology arrives. When AI assistance enters an open production system,
-            participation does not simply go up or down: it gets redistributed. Some contributors renew and
-            some leave, the mix of demand shifts, authorship and review separate, and the controls an
-            organization thought it had start to behave differently. I measure those shifts directly from
-            platform event logs (33 million events across 65 GitHub repositories in my current study),
-            using quasi-experimental causal inference, strategic network models, and blinded LLM instruments
-            that read evidence out of code review rather than relying on timestamps alone.
-          </p>
-          <p>
-            Before my PhD I spent four years in industry in Tehran as a systems and processes analyst, running
-            data and process mining projects on enterprise logs. That is where I learned that a model only
-            matters if someone can make a decision with it.
-          </p>
-        </div>
+    <div class="about-lede reveal">
+      <p>
+        I study what happens to <strong>the organization of work</strong> when a general-purpose
+        technology arrives. When AI assistance enters an open production system, participation is
+        redistributed rather than simply increased: some contributors renew and others leave, the mix
+        of demand shifts, authorship separates from review, and the controls an organization believed
+        it had start to behave differently. I measure those shifts directly from platform event logs
+        &mdash; 33 million events across 65 GitHub repositories in the current study &mdash; using
+        quasi-experimental causal inference, network models, and blinded LLM instruments that read
+        evidence out of code review rather than relying on timestamps alone. Four years as a systems
+        and processes analyst before the PhD taught me that a model only matters if someone can make
+        a decision with it.
+      </p>
+      <p>
+        <strong>I am on the academic job market</strong> for faculty positions starting in 2027.
+      </p>
+      <p class="note">
+        <strong>A small note:</strong> my legal name is Negin, but I also go by Megan;
+        it is simply easier to say &ldquo;a coffee for Megan&rdquo; at caf&eacute;s in the US.
+      </p>
+    </div>
 
-        <p class="note">
-          <strong>A small note:</strong> my legal name is Negin, but I also go by Megan;
-          I realized it is simply easier to say &ldquo;a coffee for Megan&rdquo; at cafés in the US.
-        </p>
-      </div>
-
-      <aside class="facts reveal">
-        <h3>Education</h3>
+    <div class="three-col">
+      <div class="panel reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5l9-3.5 9 3.5-9 3.5z"/><path d="M6 9.4v5.1c0 2 2.7 3.5 6 3.5s6-1.5 6-3.5V9.4"/><path d="M21 7v6"/></svg>
+          Education
+        </h3>
         <ul class="edu">
           <li>
             <span class="deg">PhD, Industrial Engineering</span>
-            <span class="inst">Northeastern University, Boston &middot; Jan 2022 &ndash; May 2027 (expected) &middot; GPA 3.9/4</span>
+            <span class="inst">Northeastern University &middot; 2022&ndash;2027 (expected) &middot; GPA 3.9/4</span>
           </li>
           <li>
             <span class="deg">Graduate Certificate, <a href="https://mie.northeastern.edu/academics/graduate-studies/cert-dae/" target="_blank" rel="noopener">Data Analytics Engineering</a></span>
-            <span class="inst">Northeastern University, Boston &middot; concurrent with the PhD</span>
+            <span class="inst">Northeastern University</span>
           </li>
           <li>
             <span class="deg">MSc, Industrial Engineering</span>
-            <span class="inst"><a href="https://en.industrial.kntu.ac.ir/page-industrialEn9609/en/40/form/pId1176" target="_blank" rel="noopener">K.N. Toosi University of Technology</a>, Tehran &middot; Sep 2017 &ndash; Jan 2020</span>
+            <span class="inst"><a href="https://en.industrial.kntu.ac.ir/page-industrialEn9609/en/40/form/pId1176" target="_blank" rel="noopener">K.N. Toosi University of Technology</a>, Tehran &middot; 2017&ndash;2020</span>
           </li>
           <li>
             <span class="deg">BSc, Industrial Engineering</span>
-            <span class="inst"><a href="https://www.timeshighereducation.com/world-university-rankings/alzahra-university" target="_blank" rel="noopener">Alzahra University</a>, Tehran &middot; Sep 2013 &ndash; Sep 2017</span>
+            <span class="inst"><a href="https://www.timeshighereducation.com/world-university-rankings/alzahra-university" target="_blank" rel="noopener">Alzahra University</a>, Tehran &middot; 2013&ndash;2017</span>
           </li>
         </ul>
+      </div>
 
-        <h3>Methods</h3>
-        <div class="chips">
-          <span class="chip">Generative AI</span>
-          <span class="chip">Machine learning</span>
-          <span class="chip">Quasi-experimental causal inference</span>
-          <span class="chip">Network analysis</span>
-          <span class="chip">Agent-based modeling</span>
-          <span class="chip">Time-series modeling</span>
-          <span class="chip">Process mining and conformance checking</span>
-          <span class="chip">Text mining</span>
-        </div>
+      <div class="panel reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v12H4z"/><path d="M8 21h8M12 17v4"/></svg>
+          Teaching
+        </h3>
+        <ul class="stack">
+          <li>
+            <span class="t">Economic Decision-Making &mdash; graduate TA and technical-session instructor</span>
+            <span class="s">Engineering Management, Northeastern &middot; 2023&ndash;present. Data simulation, quantitative decision analysis, financial risk; about 250 graduate students.</span>
+          </li>
+          <li>
+            <span class="t">Economic Decision-Making online &mdash; co-designer and on-camera instructor</span>
+            <span class="s">Northeastern / Coursera, EDGE Studio &middot; 2025.</span>
+          </li>
+          <li>
+            <span class="t">Analytics workshops &mdash; developer and instructor</span>
+            <span class="s">Sharif University of Technology and Behfa clients, Tehran &middot; 2021.</span>
+          </li>
+        </ul>
+      </div>
 
-        <h3>Tools</h3>
-        <div class="chips">
-          <span class="chip">Python</span>
-          <span class="chip">pandas</span>
-          <span class="chip">NumPy</span>
-          <span class="chip">PyTorch</span>
-          <span class="chip">TensorFlow</span>
-          <span class="chip">Hugging Face</span>
-          <span class="chip">NLTK</span>
-          <span class="chip">NetworkX</span>
-          <span class="chip">R</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Git</span>
-        </div>
-      </aside>
+      <div class="panel reveal">
+        <h3>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.2 1.1 5.9L12 16.5 6.7 19.3l1.1-5.9L3.5 9.2l5.9-.8z"/></svg>
+          Academic service
+        </h3>
+        <ul class="stack">
+          <li>
+            <span class="t">Journal reviewing</span>
+            <span class="s">Journal of Computing and Information Science in Engineering &middot; Data Mining and Knowledge Discovery &middot; Scientific Reports &middot; Humanities and Social Sciences Communications &middot; Future Business Journal &middot; Knowledge and Information Systems</span>
+          </li>
+          <li>
+            <span class="t">Conference reviewing</span>
+            <span class="s">IC2S2 2025 &middot; Wiki Workshop 2025</span>
+          </li>
+          <li>
+            <span class="t">Presentations</span>
+            <span class="s">CESUN 2025 &middot; IC2S2 2024 &middot; INFORMS 2024 &middot; NetSci 2026 &middot; Wiki Workshop 2024</span>
+          </li>
+        </ul>
+      </div>
     </div>
 
-      <p class="strip-label reveal">A few moments from the PhD: Northeastern EDGE studio, my &ldquo;best advisor ever&rdquo;, and conference rooms</p>
+      <p class="strip-label reveal">A few moments from the PhD</p>
       <div class="gallery photo-strip">
       <article class="gcard reveal">
         <div class="gmedia">
@@ -1011,7 +1047,6 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
         <div class="gbody">
           <p class="gmeta">Northeastern EDGE Studio &middot; Fall 2025</p>
           <h3>Teaching an online graduate course</h3>
-          <p>Co-designed and taught an online course for Engineering Management master's students, delivered through Northeastern and Coursera; I scripted the video modules and served as on-camera instructor.</p>
         </div>
       </article>
       <article class="gcard reveal">
@@ -1019,7 +1054,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
           <button class="gcard-btn"
                   data-full="images/studio-photo.jpg"
                   data-title="Realizing how much I love teaching"
-                  data-meta="Northeastern EDGE Studio · Fall 2025"
+                  data-meta="Northeastern EDGE Studio &middot; Fall 2025"
                   data-desc="On set during production of the online Engineering Management course.">
             <img src="images/studio-photo.jpg" width="1400" height="1400" loading="lazy" style="object-position:center 45%" alt="Negin Maddah recording an online course in Northeastern's EDGE Studio">
             <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
@@ -1028,44 +1063,136 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
         <div class="gbody">
           <p class="gmeta">Northeastern EDGE Studio &middot; Fall 2025</p>
           <h3>Realizing how much I love teaching</h3>
-          <p>On set during production of the online Engineering Management course: the moment teaching stopped being a task and became a goal.</p>
         </div>
       </article>
       <article class="gcard reveal">
         <div class="gmedia">
           <button class="gcard-btn"
                   data-full="images/informs-2024.jpg"
-                  data-title="Presenting at INFORMS Annual Meeting"
-                  data-meta="INFORMS 2024, Seattle · Fall 2024"
+                  data-title="Presenting at INFORMS"
+                  data-meta="INFORMS 2024, Seattle"
                   data-desc="Presenting our work on platform-driven collaboration patterns at the INFORMS Annual Meeting.">
             <img src="images/informs-2024.jpg" width="1050" height="1400" loading="lazy" style="object-position:center 50%" alt="Negin Maddah presenting at the INFORMS 2024 Annual Meeting in Seattle">
             <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
           </button>
         </div>
         <div class="gbody">
-          <p class="gmeta">INFORMS 2024, Seattle &middot; Fall 2024</p>
+          <p class="gmeta">INFORMS 2024, Seattle</p>
           <h3>Presenting at INFORMS</h3>
-          <p>Sharing our findings on how collaboration structure evolves as digital platforms grow in scale.</p>
         </div>
       </article>
       </div>
   </div>
 </section>
 
+<!-- ══════════════════ RECOGNITION ══════════════════ -->
+<section id="recognition" class="band">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Recognition</p>
+      <h2>Honors &amp; selections</h2>
+    </div>
+
+    <div class="awards-row awards-row--2 reveal">
+      <div class="award award--media award--card">
+        <div class="award-media">
+          <video src="bestp.mp4" controls preload="metadata" playsinline></video>
+        </div>
+        <div class="award-body">
+          <span class="award-y">2025</span>
+          <span class="award-t">Best Presentation Award</span>
+          <span class="award-s">Council of Engineering Systems Universities (CESUN), for the work on decentralized recovery.</span>
+        </div>
+      </div>
+      <div class="award award--media award--card">
+        <div class="award-media">
+          <button class="gcard-btn"
+          data-full="images/mit-aicures-talk.jpg"
+          data-title="Spotlight presenter at MIT&ndash;MGB AI Cures"
+          data-meta="MIT&ndash;MGB AI Cures Conference &middot; 2025"
+          data-desc="Presenting the BeatAI work: transformer-based daily risk classification and hour-ahead forecasting of atrial arrhythmia after cardiac surgery.">
+          <img src="images/mit-aicures-talk.jpg" width="1120" height="1400" loading="lazy" style="object-position:center 55%" alt="Negin Maddah giving a spotlight presentation at MIT-MGB AI Cures 2025">
+          <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
+          </button>
+        </div>
+        <div class="award-body">
+          <span class="award-y">2025</span>
+          <span class="award-t">Spotlight Presentation, MIT&ndash;MGB AI-Cures</span>
+          <span class="award-s">For BeatAI: daily risk classification and hour-ahead forecasting of atrial arrhythmia after cardiac surgery.</span>
+          <span class="award-cite">
+            <em>BeatAI: biometrics for real-time atrial arrhythmia tracking using artificial intelligence.</em>
+            A. Ramezani, <span class="self">N. Maddah</span><span class="tag">co-first author</span>, et al.
+            &middot; BMC Cardiovascular Disorders, revise &amp; resubmit.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="awards-row awards-row--3 reveal">
+      <div class="award award--media award--card">
+        <div class="award-media">
+          <video src="plenarytalk.MP4" controls preload="metadata" playsinline></video>
+        </div>
+        <div class="award-body">
+          <span class="award-y">2024</span>
+          <span class="award-t">Plenary Talk to a 500+ audience at IC2S2</span>
+          <span class="award-s">International Conference on Computational Social Science, University of Pennsylvania.</span>
+          <ul class="award-pts">
+            <li>One of 20 talks selected from 700+ submissions.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="award award--media award--card">
+        <div class="award-media">
+          <button class="gcard-btn"
+          data-full="images/phd-merit-award.jpg"
+          data-title="Research Merit Award"
+          data-meta="MIE Department, Northeastern University &middot; 2024"
+          data-desc="Awarded by the Department of Mechanical and Industrial Engineering. The certificate names it the John and Katharine Cipolla Merit Award.">
+          <img src="images/phd-merit-award.jpg" width="1400" height="1139" loading="lazy" alt="Certificate for the John and Katharine Cipolla Merit Award presented to Negin Maddah">
+          <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
+          </button>
+        </div>
+        <div class="award-body">
+          <span class="award-y">2024</span>
+          <span class="award-t">Research Merit Award</span>
+          <span class="award-s">Mechanical and Industrial Engineering, Northeastern University.</span>
+        </div>
+      </div>
+      <div class="award award--media award--card">
+        <div class="award-media">
+          <button class="gcard-btn"
+          data-full="images/futurebaprof-2024.jpg"
+          data-title="Selected for the FutureBAProf workshop"
+          data-meta="Tippie College of Business, University of Iowa &middot; 2024"
+          data-desc="With Professor Ann Melissa Campbell, who runs the FutureBAProf workshop. Admission is by application, and the program walks doctoral students through the academic job market for prospective business analytics faculty.">
+          <img src="images/futurebaprof-2024.jpg" width="1030" height="1400" loading="lazy" style="object-position:center 48%" alt="Negin Maddah with Professor Ann Melissa Campbell and another participant at the FutureBAProf workshop">
+          <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
+          </button>
+        </div>
+        <div class="award-body">
+          <span class="award-y">2024</span>
+          <span class="award-t">Selected Participant, FutureBAProf</span>
+          <span class="award-s">Tippie College of Business, University of Iowa &mdash; a competitive workshop for prospective business analytics faculty.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══════════════════ RESEARCH ══════════════════ -->
-<section id="research" class="band">
+<section id="research" class="band band--alt">
   <span id="publications"></span>
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Research &amp; publications</p>
       <h2>Three threads, one question</h2>
       <p>
-        Open-source production, enterprise process governance, clinical data quality; different
-        settings, one underlying problem: what happens to work, and to control over work, when the
-        system changes underneath it. Each thread carries its own papers, listed with it.
+        Different settings, one underlying problem: what happens to work, and to control over work,
+        when the system changes underneath it.
       </p>
       <p class="pub-more" style="margin-top:14px">
-        For the complete and current list, see my
+        Full list on my
         <a href="https://scholar.google.com/citations?user=hXWdTswAAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">Google Scholar profile</a>
         or my <a href="Negin_Maddah_CV.pdf" target="_blank" rel="noopener">CV</a>.
       </p>
@@ -1073,31 +1200,23 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 
     <div class="threads">
 
-      <!-- ─────────── thread 1 ─────────── -->
       <article class="thread reveal">
         <div class="thread-side">
-          <div class="thread-ico">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l4-6 4 3 4-7 4 5"/><path d="M3 21h18"/><circle cx="7" cy="11" r="1.4"/><circle cx="11" cy="14" r="1.4"/><circle cx="15" cy="7" r="1.4"/></svg>
-          </div>
+          <div class="thread-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l4-6 4 3 4-7 4 5"/><path d="M3 21h18"/><circle cx="7" cy="11" r="1.4"/><circle cx="11" cy="14" r="1.4"/><circle cx="15" cy="7" r="1.4"/></svg></div>
           <h3>AI adoption &amp; the organization of work</h3>
           <p>
             What generative AI changes about who takes part in knowledge work and how that work is
-            organized: which contributors stay, what they produce, and whether adoption reshapes the
-            workflow itself or only the individual doing the task.
+            organized: which contributors stay, what they produce, whether adoption reshapes the
+            workflow itself, and whether the controls an organization believes it has still hold.
           </p>
           <div class="chips">
             <span class="chip">Difference-in-differences</span>
             <span class="chip">Event studies</span>
             <span class="chip">Platform event logs</span>
             <span class="chip">Markov models</span>
+            <span class="chip">LLM measurement</span>
+            <span class="chip">Conformance checking</span>
           </div>
-          <!-- Framework figure for this thread. Save the diagram as
-               images/framework-ai-adoption.png (or .jpg) and delete these two comment lines.
-          <figure class="thread-fig">
-            <img src="images/framework-ai-adoption.png" loading="lazy" alt="Framework: AI adoption and the organization of work">
-            <figcaption>Framework: AI adoption and the organization of work</figcaption>
-          </figure>
-          -->
         </div>
 
         <div class="thread-pubs">
@@ -1110,7 +1229,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
                 <span class="venue">Technological Forecasting and Social Change</span>
                 <span class="venue venue--if">Revise &amp; resubmit</span>
               </div>
-              <p class="pub-note">Examines changes in contributor renewal, demand composition, and answer access following ChatGPT&rsquo;s release.</p>
+              <p class="pub-note">Changes in contributor renewal, demand composition, and answer access after ChatGPT&rsquo;s release.</p>
             </div>
           </article>
 
@@ -1120,32 +1239,40 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
               <h4>Individual AI-assistance and workflow change in open-source production: evidence from AI-agent adoption</h4>
               <p class="pub-stage"><span class="venue venue--if">Working paper</span></p>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-              <p class="pub-note">Separates an individual AI assistance channel from a workflow channel in AI-agent adoption on GitHub, tracing how each changes what contributors produce and how repositories convert contributions into accepted output; built on an event log of 33.1 million events across 65 repositories, Jan 2021 &ndash; Jun 2026.</p>
+              <p class="pub-note">Separates an individual assistance channel from a workflow channel in AI-agent adoption on GitHub, over an event log of 33.1 million events across 65 repositories.</p>
             </div>
           </article>
 
           <article class="pub">
             <div class="pub-n">03</div>
             <div>
+              <h4>LLM for centralized process compliance checking in decentralized co-creation</h4>
+              <p class="pub-stage"><span class="venue venue--if">Working paper &middot; target: Information Systems Research / Organization Science</span></p>
+              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
+              <p class="pub-note">A blinded, evidence-citing language-model instrument audits four change-approval controls across 1,495 sampled changes in 31 projects, checked by an independent second scorer.</p>
+            </div>
+          </article>
+
+          <article class="pub">
+            <div class="pub-n">04</div>
+            <div>
               <h4>Technology shock or network feedback? A behavior-calibrated Markov model</h4>
               <p class="pub-stage"><span class="venue venue--if">In progress</span></p>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-              <p class="pub-note">Learns a covariate-dependent model of contributor state transitions from pre-release behavior, embeds it in a multi-agent simulation, and compares simulated counterfactuals with observed trajectories to isolate the direct generative AI shock from the amplification network feedback produces.</p>
+              <p class="pub-note">Embeds a covariate-dependent model of contributor transitions in a multi-agent simulation to separate the direct AI shock from the amplification network feedback produces.</p>
             </div>
           </article>
         </div>
       </article>
-      <!-- ─────────── thread 2 ─────────── -->
+
       <article class="thread reveal">
         <div class="thread-side">
-          <div class="thread-ico">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="17" r="2.4"/><circle cx="19" cy="17" r="2.4"/><path d="M12 7.4L5.9 14.9M12 7.4l6.1 7.5M7.4 17h9.2"/></svg>
-          </div>
+          <div class="thread-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="17" r="2.4"/><circle cx="19" cy="17" r="2.4"/><path d="M12 7.4L5.9 14.9M12 7.4l6.1 7.5M7.4 17h9.2"/></svg></div>
           <h3>Networks &amp; sociotechnical resilience</h3>
           <p>
-            How systems reorganize themselves without a central planner: how collaboration structure
-            evolves as platforms scale, and how networks rebuild after disruption through the
-            reconnection choices of heterogeneous agents.
+            How systems reorganize without a central planner: how collaboration structure evolves as
+            platforms scale, and how networks rebuild after disruption through the reconnection
+            choices of individual agents.
           </p>
           <div class="chips">
             <span class="chip">Strategic network formation</span>
@@ -1153,18 +1280,11 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
             <span class="chip">Agent-based simulation</span>
             <span class="chip">Network resilience</span>
           </div>
-          <!-- Framework figure for this thread. Save the diagram as
-               images/framework-networks.png (or .jpg) and delete these two comment lines.
-          <figure class="thread-fig">
-            <img src="images/framework-networks.png" loading="lazy" alt="Framework: networks and sociotechnical resilience">
-            <figcaption>Framework: networks and sociotechnical resilience</figcaption>
-          </figure>
-          -->
         </div>
 
         <div class="thread-pubs">
           <article class="pub">
-            <div class="pub-n">04</div>
+            <div class="pub-n">05</div>
             <div>
               <h4>Platform-driven collaboration patterns: structural evolution over time and scale</h4>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
@@ -1175,12 +1295,11 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
                 </a>
                 <span class="year">2024</span>
               </div>
-              <p class="pub-note"><span class="rec">Recognition</span> Plenary talk at IC2S2 2024, University of Pennsylvania (one of 20 selected from 700+ submissions).</p>
             </div>
           </article>
 
           <article class="pub">
-            <div class="pub-n">05</div>
+            <div class="pub-n">06</div>
             <div>
               <h4>Building back better: modeling decentralized recovery in sociotechnical systems using strategic network dynamics</h4>
               <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
@@ -1191,7 +1310,6 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
                 </a>
                 <span class="year">2024</span>
               </div>
-              <p class="pub-note"><span class="rec">Recognition</span> Best Presentation Award, CESUN 2025.</p>
             </div>
           </article>
 
@@ -1211,44 +1329,25 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
           </figure>
         </div>
       </article>
-      <!-- ─────────── thread 3 ─────────── -->
+
       <article class="thread reveal">
         <div class="thread-side">
-          <div class="thread-ico">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="M9 12l2 2 4-4"/></svg>
-          </div>
-          <h3>Governance, compliance &amp; trustworthy data</h3>
+          <div class="thread-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Applied AI &amp; trustworthy data</h3>
           <p>
-            Whether the controls an organization believes it has are the controls it actually
-            enforces, and whether the data those decisions rest on can be trusted once it has been
-            reconstructed.
+            Applying AI where the data has to be trusted before the model can be, and separating how
+            faithfully missing values are reconstructed from how much that reconstruction actually
+            improves the decision.
           </p>
           <div class="chips">
-            <span class="chip">Process mining</span>
-            <span class="chip">Conformance checking</span>
-            <span class="chip">LLM measurement</span>
+            <span class="chip">Generative imputation</span>
+            <span class="chip">Electronic health records</span>
             <span class="chip">Data fidelity</span>
+            <span class="chip">Outcome prediction</span>
           </div>
-          <!-- Framework figure for this thread. Save the diagram as
-               images/framework-governance.png (or .jpg) and delete these two comment lines.
-          <figure class="thread-fig">
-            <img src="images/framework-governance.png" loading="lazy" alt="Framework: governance, compliance and trustworthy data">
-            <figcaption>Framework: governance, compliance and trustworthy data</figcaption>
-          </figure>
-          -->
         </div>
 
         <div class="thread-pubs">
-          <article class="pub">
-            <div class="pub-n">06</div>
-            <div>
-              <h4>LLM for centralized process compliance checking in decentralized co-creation</h4>
-              <p class="pub-stage"><span class="venue venue--if">Working paper &middot; target: Information Systems Research / Organization Science</span></p>
-              <p class="authors"><span class="self">N. Maddah</span>, B. Heydari</p>
-              <p class="pub-note">Uses a blinded, evidence-citing language-model instrument over 3,834 GitHub code-review cases, checked by an independent second LLM scorer, to audit four change-approval controls across 1,495 sampled changes in 31 projects.</p>
-            </div>
-          </article>
-
           <article class="pub">
             <div class="pub-n">07</div>
             <div>
@@ -1258,9 +1357,50 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
                 <span class="venue">npj Digital Medicine</span>
                 <span class="venue venue--if">Revise &amp; resubmit</span>
               </div>
-              <p class="pub-note">Benchmarks classical and generative approaches to missing-data reconstruction across mixed data types in two electronic health record systems, distinguishing how faithfully values are reconstructed from how much they improve outcome prediction.</p>
+              <p class="pub-note">Benchmarks classical and generative reconstruction of missing values across mixed data types in two electronic health record systems.</p>
             </div>
           </article>
+        </div>
+      </article>
+
+      <article class="thread reveal">
+        <div class="thread-side">
+          <div class="thread-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+          <h3>How I work</h3>
+          <p>The methods and tools these threads are built on.</p>
+        </div>
+        <div class="thread-pubs">
+          <div class="toolbox">
+            <div class="tb">
+              <h4>Methods</h4>
+              <div class="chips">
+                <span class="chip">Generative AI</span>
+                <span class="chip">Machine learning</span>
+                <span class="chip">Quasi-experimental causal inference</span>
+                <span class="chip">Network analysis</span>
+                <span class="chip">Agent-based modeling</span>
+                <span class="chip">Time-series modeling</span>
+                <span class="chip">Process mining and conformance checking</span>
+                <span class="chip">Text mining</span>
+              </div>
+            </div>
+            <div class="tb">
+              <h4>Tools</h4>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">pandas</span>
+                <span class="chip">NumPy</span>
+                <span class="chip">PyTorch</span>
+                <span class="chip">TensorFlow</span>
+                <span class="chip">Hugging Face</span>
+                <span class="chip">NLTK</span>
+                <span class="chip">NetworkX</span>
+                <span class="chip">R</span>
+                <span class="chip">SQL</span>
+                <span class="chip">Git</span>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -1269,7 +1409,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
 </section>
 
 <!-- ══════════════════ EXPERIENCE ══════════════════ -->
-<section id="experience" class="band band--alt">
+<section id="experience" class="band">
   <div class="wrap">
     <div class="sec-head reveal">
       <p class="eyebrow">Experience</p>
@@ -1369,143 +1509,6 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
   </div>
 </section>
 
-<!-- ══════════════════ RECOGNITION ══════════════════ -->
-<section id="recognition" class="band">
-  <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="eyebrow">Recognition</p>
-      <h2>Honors &amp; selections</h2>
-    </div>
-
-    <div class="awards reveal" style="margin-bottom:52px">
-      <div class="award award--media">
-        <div class="award-media">
-          <video src="bestp.mp4" controls preload="metadata" playsinline></video>
-        </div>
-        <div class="award-body">
-          <span class="award-y">2025</span>
-          <span class="award-t">Best Presentation Award</span>
-          <span class="award-s">CESUN (Council of Engineering Systems Universities): for the work on decentralized recovery in sociotechnical systems.</span>
-        </div>
-      </div>
-      <div class="award award--media">
-        <div class="award-media">
-          <button class="gcard-btn"
-          data-full="images/mit-aicures-talk.jpg"
-          data-title="Spotlight presenter at MIT–MGB AI Cures"
-          data-meta="MIT–MGB AI Cures Conference · 2025"
-          data-desc="Presenting the BeatAI work: transformer-based daily risk classification and hour-ahead forecasting of atrial arrhythmia after cardiac surgery, from wearable cardiac monitoring.">
-          <img src="images/mit-aicures-talk.jpg" width="1120" height="1400" loading="lazy" style="object-position:center 55%" alt="Negin Maddah giving a spotlight presentation at MIT-MGB AI Cures 2025">
-          <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
-          </button>
-        </div>
-        <div class="award-body">
-          <span class="award-y">2025</span>
-          <span class="award-t">Spotlight Presentation, MIT&ndash;MGB AI-Cures</span>
-          <span class="award-s">Selected for the BeatAI work: transformer-based daily risk classification and hour-ahead forecasting of atrial arrhythmia after cardiac surgery, from wearable cardiac monitoring.</span>
-          <span class="award-cite">
-            <em>BeatAI: biometrics for real-time atrial arrhythmia tracking using artificial intelligence.</em>
-            A. Ramezani, <span class="self">N. Maddah</span><span class="tag">co-first author</span>, M. Heine,
-            A. Homaei, L. Simeth, L. Mazuera, A. Osho, J. D. Muehlschlegel, J. Wollborn, F. R. Nezami
-            &middot; BMC Cardiovascular Disorders, revise &amp; resubmit.
-          </span>
-        </div>
-      </div>
-      <div class="award award--media">
-        <div class="award-media">
-          <button class="gcard-btn"
-          data-full="images/phd-merit-award.jpg"
-          data-title="Research Merit Award"
-          data-meta="MIE Department, College of Engineering, Northeastern University · 2024"
-          data-desc="Awarded by the Department of Mechanical and Industrial Engineering. The certificate names it the John and Katharine Cipolla Merit Award.">
-          <img src="images/phd-merit-award.jpg" width="1400" height="1139" loading="lazy" alt="Certificate for the John and Katharine Cipolla Merit Award presented to Negin Maddah">
-          <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
-          </button>
-        </div>
-        <div class="award-body">
-          <span class="award-y">2024</span>
-          <span class="award-t">Research Merit Award</span>
-          <span class="award-s">Department of Mechanical and Industrial Engineering, College of Engineering, Northeastern University.</span>
-        </div>
-      </div>
-      <div class="award award--media">
-        <div class="award-media">
-          <video src="plenarytalk.MP4" controls preload="metadata" playsinline></video>
-        </div>
-        <div class="award-body">
-          <span class="award-y">2024</span>
-          <span class="award-t">Plenary Talk to a 500+ audience at IC2S2</span>
-          <span class="award-s">International Conference on Computational Social Science, University of Pennsylvania.</span>
-          <ul class="award-pts">
-            <li>One of 20 talks selected from 700+ submissions.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="award award--media">
-        <div class="award-media">
-          <button class="gcard-btn"
-          data-full="images/futurebaprof-2024.jpg"
-          data-title="Selected for the FutureBAProf workshop"
-          data-meta="Tippie College of Business, University of Iowa · 2024"
-          data-desc="With Professor Ann Melissa Campbell, who runs the FutureBAProf workshop. Admission is by application, and the program walks doctoral students through the academic job market for prospective business analytics faculty: the parts of the process I had no idea existed until that week."
-          >
-          <img src="images/futurebaprof-2024.jpg" width="1030" height="1400" loading="lazy" style="object-position:center 48%" alt="Negin Maddah with Professor Ann Melissa Campbell and another participant at the FutureBAProf workshop">
-          <span class="zoom-hint"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5L18 18M9 6.5v5M6.5 9h5"/></svg>View</span>
-          </button>
-        </div>
-        <div class="award-body">
-          <span class="award-y">2024</span>
-          <span class="award-t">Selected Participant, FutureBAProf</span>
-          <span class="award-s">Tippie College of Business, University of Iowa: a competitive workshop for prospective business analytics faculty.</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="two-col">
-      <div class="panel reveal">
-        <h3>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5l9-3.5 9 3.5-9 3.5z"/><path d="M6 9.4v5.1c0 2 2.7 3.5 6 3.5s6-1.5 6-3.5V9.4"/><path d="M21 7v6"/></svg>
-          Teaching
-        </h3>
-        <ul class="stack">
-          <li>
-            <span class="t">Economic Decision-Making: Graduate TA &amp; technical-session instructor</span>
-            <span class="s">Engineering Management Program, College of Engineering, Northeastern University &middot; 2023&ndash;present. Collaborative, hands-on technical sessions across online and in-person sections covering data simulation, quantitative decision analysis, and financial risk analysis; approximately 250 graduate students across cohorts.</span>
-          </li>
-          <li>
-            <span class="t">Economic Decision-Making online course: Co-designer &amp; on-camera instructor</span>
-            <span class="s">Northeastern University / Coursera, EDGE Studio &middot; 2025. Co-designed the Coursera version for Engineering Management master&rsquo;s students, scripted the instructional video modules, coordinated the animations, and recorded the course.</span>
-          </li>
-          <li>
-            <span class="t">Analytics workshops: Developer &amp; instructor</span>
-            <span class="s">Sharif University of Technology and Behfa Consulting Group clients, Tehran &middot; 2021. Data and process mining workshops.</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="panel reveal">
-        <h3>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.6 5.4 5.9.8-4.3 4.2 1.1 5.9L12 16.5 6.7 19.3l1.1-5.9L3.5 9.2l5.9-.8z"/></svg>
-          Academic service
-        </h3>
-        <ul class="stack">
-          <li>
-            <span class="t">Journal reviewing</span>
-            <span class="s">Journal of Computing and Information Science in Engineering &middot; Data Mining and Knowledge Discovery &middot; Scientific Reports &middot; Humanities and Social Sciences Communications &middot; Future Business Journal &middot; Knowledge and Information Systems</span>
-          </li>
-          <li>
-            <span class="t">Conference reviewing</span>
-            <span class="s">International Conference on Computational Social Science (IC2S2) 2025 &middot; Wiki Workshop 2025</span>
-          </li>
-          <li>
-            <span class="t">Conference presentations</span>
-            <span class="s">CESUN 2025 and earlier meetings &middot; IC2S2 2024 &middot; INFORMS Annual Meeting 2024 &middot; Network Science Conference (NetSci) 2026 &middot; Wiki Workshop 2024</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 
 <!-- ══════════════════ CONTACT / FOOTER ══════════════════ -->
