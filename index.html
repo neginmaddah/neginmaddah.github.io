@@ -324,6 +324,18 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
 .edu li:last-child{margin-bottom:0}
 .edu .deg{display:block;color:var(--ink);font-weight:600}
 .edu .inst{color:var(--muted);font-size:.885rem}
+.edu .thesis{
+  display:block;margin-top:6px;padding-left:9px;
+  border-left:2px solid var(--line);
+  font-size:.845rem;line-height:1.5;color:var(--muted);
+}
+.edu .thesis em{font-style:italic;color:var(--ink-soft)}
+/* Education reads as a plain record: no accent colour anywhere inside it */
+.panel--plain>h3 svg{color:var(--muted)}
+.panel--plain .edu li::before{background:var(--muted);opacity:.5}
+.panel--plain .edu a{color:var(--ink);font-weight:600;text-decoration:underline;
+  text-decoration-color:var(--line-strong);text-underline-offset:2px}
+.panel--plain .edu a:hover{color:var(--ink);text-decoration-color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{
   padding:4.5px 11px;border-radius:7px;font-size:.785rem;font-weight:500;
@@ -981,7 +993,7 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
     </div>
 
     <div class="three-col">
-      <div class="panel reveal">
+      <div class="panel panel--plain reveal">
         <h3>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5l9-3.5 9 3.5-9 3.5z"/><path d="M6 9.4v5.1c0 2 2.7 3.5 6 3.5s6-1.5 6-3.5V9.4"/><path d="M21 7v6"/></svg>
           Education
@@ -990,6 +1002,8 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
           <li>
             <span class="deg">PhD, Industrial Engineering</span>
             <span class="inst">Northeastern University &middot; 2022&ndash;2027 (expected) &middot; GPA 3.9/4</span>
+            <span class="thesis">Dissertation: <em>Governing Information Systems in the Generative AI Era:
+              Centralized Control of Decentralized Participation and Workflow</em> (in progress)</span>
           </li>
           <li>
             <span class="deg">Graduate Certificate, <a href="https://mie.northeastern.edu/academics/graduate-studies/cert-dae/" target="_blank" rel="noopener">Data Analytics Engineering</a></span>
