@@ -330,12 +330,14 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
   font-size:.845rem;line-height:1.5;color:var(--muted);
 }
 .edu .thesis em{font-style:italic;color:var(--ink-soft)}
-/* Education reads as a plain record: no accent colour anywhere inside it */
-.panel--plain>h3 svg{color:var(--muted)}
-.panel--plain .edu li::before{background:var(--muted);opacity:.5}
-.panel--plain .edu a{color:var(--ink);font-weight:600;text-decoration:underline;
-  text-decoration-color:var(--line-strong);text-underline-offset:2px}
-.panel--plain .edu a:hover{color:var(--ink);text-decoration-color:var(--muted)}
+/* Education: links take the colour of the text around them, so the degree
+   and institution lines read evenly instead of being broken up by accent. */
+.panel--plain .edu a{
+  color:inherit;font-weight:inherit;
+  text-decoration:underline;text-decoration-color:var(--line-strong);
+  text-underline-offset:2px;
+}
+.panel--plain .edu a:hover{text-decoration-color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{
   padding:4.5px 11px;border-radius:7px;font-size:.785rem;font-weight:500;
