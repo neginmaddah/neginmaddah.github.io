@@ -287,6 +287,27 @@ section[id]{scroll-margin-top:calc(var(--nav-h) + 26px)}
   font-size:.945rem;color:var(--ink-soft);
 }
 .note strong{color:var(--primary)}
+/* the job-market line: the one thing a search committee should not miss */
+.note--hire{
+  display:flex;align-items:center;gap:12px;
+  margin-top:22px;padding:18px 24px;
+  font-size:1.02rem;font-weight:500;color:var(--ink);
+  border-left:0;border:1px solid var(--accent);
+  background:linear-gradient(90deg,
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    color-mix(in srgb, var(--accent-2) 9%, transparent));
+}
+.note--hire strong{color:var(--accent);font-weight:700}
+.note-dot{
+  width:9px;height:9px;border-radius:50%;flex:none;
+  background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent);
+  animation:hirePulse 2.4s var(--ease) infinite;
+}
+@keyframes hirePulse{
+  0%,100%{box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent)}
+  50%    {box-shadow:0 0 0 8px color-mix(in srgb, var(--accent) 6%, transparent)}
+}
+@media (prefers-reduced-motion:reduce){.note-dot{animation:none}}
 
 .facts{
   background:var(--surface);border:1px solid var(--line);
@@ -959,12 +980,9 @@ a.venue svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2.
         and processes analyst before the PhD taught me that a model only matters if someone can make
         a decision with it.
       </p>
-      <p>
+      <p class="note note--hire">
+        <span class="note-dot" aria-hidden="true"></span>
         <strong>I am on the academic job market</strong> for faculty positions starting in 2027.
-      </p>
-      <p class="note">
-        <strong>A small note:</strong> my legal name is Negin, but I also go by Megan;
-        it is simply easier to say &ldquo;a coffee for Megan&rdquo; at caf&eacute;s in the US.
       </p>
     </div>
 
